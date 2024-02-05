@@ -1,12 +1,42 @@
 /* Hero.css */
 .hero-container {
-    background: url('../../../../public/images/hero-03.jpeg') center/cover no-repeat; /* Replace with your image path */
+    position: relative;
+    background: url('../../../public/images/hero-03.jpeg') center/cover no-repeat;
     height: 81vh; /* Adjust the height as needed */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.2);
+        /* border-radius: 0 8rem 8rem 0; */
+        border-radius: 50%;
+   overflow: hidden;
+  }
+  
+  .top-right {
+    top: 20px;
+    right: 10px;
+    border-radius: 8rem 0 0 8rem;
+    overflow: hidden;
+  }
+  
+  .bottom-left {
+    bottom: 20px;
+    left: 10px;
+    border-radius: 0 8rem 8rem 0;
+  }
+
+  .top-right img,
+  .bottom-left img {
+    width: 100%;
   }
   
   .hero-content {
