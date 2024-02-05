@@ -1,0 +1,39 @@
+/* Hero.css */
+.hero-container {
+    background: url('../../../../public/images/hero-03.jpeg') center/cover no-repeat; /* Replace with your image path */
+    height: 81vh; /* Adjust the height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+  }
+  
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+  }
+  
+  button {
+    background-color: teal;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #058b51;
+  }
+  
