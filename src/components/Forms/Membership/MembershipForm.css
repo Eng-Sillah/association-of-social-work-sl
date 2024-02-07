@@ -1,0 +1,86 @@
+.membership-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .membership-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  .firstAndSurname {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .firstAndSurname div {
+    width: 49%;
+  }
+  
+  .nationalityAndDOB {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nationalityAndDOB .form-group {
+    width: 49%;
+  }
+
+  .dob {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dob input {
+    width: 30%;
+    margin: 0 8px;
+    padding: 10px;
+  }
+  .section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type='text'],
+  input[type='email'],
+  input[type='date'],
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

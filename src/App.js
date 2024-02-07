@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Search from './components/Search/Search';
 import Event from './components/Events/Event';
+import MembershipForm from './components/Forms/Membership/MembershipForm';
 function App() {
   return (
     <div className="App">
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <Search />
       <Event />
+      <MembershipForm />
     </div>
   );
 }

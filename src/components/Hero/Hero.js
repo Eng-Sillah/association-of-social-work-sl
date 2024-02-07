@@ -14,7 +14,7 @@ const Hero = () => {
         <img src={image02} alt="Bottom Left" />
       </div>
       <div className="hero-content">
-        <h1>Welcome to the Association of Social Work SL</h1>
+        <h1>Welcome to the Sierra Leone Association of Social Workers (SLASW)</h1>
         <p>The independent professional membership organisation for social work across Sierra Leone</p>
         <button>Learn More</button>
       </div>

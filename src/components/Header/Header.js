@@ -2,24 +2,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Import the CSS file
+import logo from "../../image/SLASW LOGO (White).jpg"
 
 const Header = () => {
   return (
     <header className="header-container">
-      <Link to="/" className="logo">
-        Social Work Association Sierra Leone
-      </Link>
+      {/* <Link to="/" className="logo">
+        Sierra Leone Association of Social Workers (SLASW)
+      </Link> */}
       <nav className="navigation">
         <div className="top-row">
-          <Link to="/advert" className="nav-item">
+            <div className='logo'>
+                <img src={logo} alt="Logo" />
+            </div>
+            <div>
+            <Link to="/advert" className="nav-item">
             Advert
           </Link>
           <Link to="/donate" className="nav-item">
             Donate
           </Link>
+          <Link to="/register" className="nav-item">
+            Register
+          </Link>
           <Link to="/login" className="nav-item">
             Login
           </Link>
+            </div>
+         
         </div>
         <div className="row">
           <div className="nav-dropdown">
