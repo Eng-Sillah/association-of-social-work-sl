@@ -39,9 +39,9 @@
  }
  .search label {
     border-radius: 0 45px 45px 0;
-    background-color: teal;
+    background-color: rgb(4, 4, 158);
     padding: 9px 20px;
-    border: 1px solid teal;
+    border: 1px solid rgb(4, 4, 158);
     cursor: pointer;
     color: white;
     border-left: none;
@@ -51,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: teal;
+    background-color: rgb(4, 4, 158);
     padding: 0 0 0 20px;
     margin-top: 100px;
     height: 250px;
@@ -68,7 +68,7 @@
   }
 
   .banner:hover {
-    background-color: rgb(2, 110, 110);
+    background-color: rgb(5, 5, 230);
   }
   
   .text {

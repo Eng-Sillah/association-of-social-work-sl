@@ -1,7 +1,12 @@
+.container {
+  background-color: rgb(4, 4, 158);
+}
 .membership-form-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: white;
+    border-top: 1px solid rgb(4, 4, 158);
   }
   
   .membership-form {
@@ -18,7 +23,7 @@
     width: 100%;
     justify-content: space-between;
   }
-  .firstAndSurname div {
+  .firstAndSurname .form-group {
     width: 49%;
   }
   
@@ -40,6 +45,47 @@
     margin: 0 8px;
     padding: 10px;
   }
+
+  .positionAndDate {
+    display: flex;
+    justify-content: space-between;
+  }
+  .positionAndDate .start-date,
+  .positionAndDate .position {
+    width: 49%;
+    margin-top: 8px;
+  }
+
+  #current-employment {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+.referee {
+  margin-bottom: 20px;
+}
+  .occAndTele {
+    display: flex;
+    justify-content: space-between;
+  }
+  .occAndTele div {
+    width: 49%;
+  }
+  .pob-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .pob-container .pob {
+    width: 49%;
+  }
+
+  .emailTele {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .emailTele .form-group {
+    width: 49%;
+  }
   .section h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
@@ -53,11 +99,11 @@
     font-weight: bold;
   }
   
-  input[type='text'],
-  input[type='email'],
-  input[type='date'],
-  select,
-  textarea {
+ .form-group input[type='text'],
+ .form-group input[type='email'],
+ .form-group input[type='date'],
+ .form-group select,
+ .form-group textarea {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
@@ -71,7 +117,7 @@
   }
   
   button {
-    background-color: #007bff;
+    background-color: rgb(4, 4, 158);
     color: white;
     border: none;
     border-radius: 4px;
@@ -79,8 +125,39 @@
     cursor: pointer;
     font-size: 1rem;
   }
-  
+
+  .inline {
+    display: inline;
+  }
+  #inline {
+    width: 300px;
+    margin-left: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+  }
+  #space {
+    margin-right: 5px;
+  }
+  #declara {
+    text-align: justify;
+  }
+
+  .signDate {
+    display: flex;
+    justify-content: space-between;
+  }
+  .signDate .form-group {
+    width: 49%;
+  }
+  #signature {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+  }
   button:hover {
-    background-color: #0056b3;
+    background-color: rgb(7, 30, 205)
   }
   

@@ -2,7 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Import the CSS file
-import logo from "../../image/SLASW LOGO (White).jpg"
+import logo from "../../image/SLASW LOGO.jpg"
+import flag from "../../image/animated-flagF.gif"
 
 const Header = () => {
   return (
@@ -13,9 +14,12 @@ const Header = () => {
       <nav className="navigation">
         <div className="top-row">
             <div className='logo'>
+              <Link to="/">
                 <img src={logo} alt="Logo" />
+                </Link>
             </div>
-            <div>
+            <h1 className='heading'>Sierra Leone <span className='flag'><img src={flag} alt="flag" /></span> <br /> Association of Social Workers (SLASW)</h1>
+            <div className='top-row-links'>
             <Link to="/advert" className="nav-item">
             Advert
           </Link>
