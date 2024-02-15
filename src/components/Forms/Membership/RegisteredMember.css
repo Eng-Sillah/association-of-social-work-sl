@@ -1,0 +1,51 @@
+/* RegisteredMember.css */
+
+.registered-member-container {
+    margin: 20px;
+  }
+  
+  .registered-member-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .registered-member-table th,
+  .registered-member-table td {
+    border: 1px solid #ddd;
+    padding: 8px 4px;
+  }
+  
+  .registered-member-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .approve-btn,
+  .deny-btn {
+    padding: 8px;
+    margin-right: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .approve-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .deny-btn {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .registered-member-table .action {
+    text-align: center;
+    display: flex;
+  }
+
+  .registered-member-table .action button {
+    font-size: 12px;
+  }
+  

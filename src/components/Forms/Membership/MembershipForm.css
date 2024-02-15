@@ -34,7 +34,23 @@
   .nationalityAndDOB .form-group {
     width: 49%;
   }
+.middleGender {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.middleGender .form-group {
+  width: 49%;
+}
+.femaleOther {
+  margin-left: 10px;
+}
+
+.middleGender .form-group label,
+.middleGender .form-group input {
+  cursor: pointer;
+}
   .dob {
     display: flex;
     justify-content: space-between;
@@ -46,6 +62,7 @@
     padding: 10px;
   }
 
+  
   .positionAndDate {
     display: flex;
     justify-content: space-between;

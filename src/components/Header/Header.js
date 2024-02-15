@@ -41,28 +41,37 @@ const Header = () => {
               About
             </Link>
             <div className="dropdown-content">
-              <Link to="/governance">Governance</Link>
-              <Link to="/delegate-assembly">Delegate Assembly</Link>
-              <Link to="/career">Career</Link>
+              <Link to="/governance">Social Work in SL</Link>
+              <Link to="/delegate-assembly">About SLASW</Link>
               <Link to="/ethics">Ethics</Link>
-              <Link to="/legal-defence-fund">Legal Defence Fund</Link>
+              
             </div>
           </div>
           <div className="nav-dropdown">
           <Link to="/practice" className="nav-item">
-            Practice
+            Governance
           </Link>
           <div className="dropdown-content">
-              <Link to="/governance">Aging</Link>
-              <Link to="/delegate-assembly">Behavioral Health</Link>
-              <Link to="/career">Child Welfare</Link>
+              <Link to="/governance">Constitution</Link>
+              <Link to="/delegate-assembly">Executive lagars</Link>
+              {/* <Link to="/career">Child Welfare</Link>
               <Link to="/ethics">Clinical Social Work</Link>
-              <Link to="/legal-defence-fund">Legal Defence Fund</Link>
+              <Link to="/legal-defence-fund">Legal Defence Fund</Link> */}
             </div>
             </div> 
+            <div className="nav-dropdown">
           <Link to="/career" className="nav-item">
-            Career
-          </Link>
+            Meetings
+            </Link>
+            <div className="dropdown-content">
+              <Link to="/agm">AGM</Link>
+              <Link to="/executive-meeting">Executive Meetings</Link>
+              {/* <div className="dropdown-content">
+                <Link to="/board">Board</Link>
+              </div> */}
+            </div>
+            </div>
+          
           <Link to="/advocacy" className="nav-item">
             Advocacy
           </Link>

@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import './MembershipForm.css'; // Import the CSS file
+import "../../../firebaseConfig"
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
+
 
 const MembershipForm = () => {
 // State to store form data
@@ -8,12 +12,13 @@ const [formData, setFormData] = useState({
   surname: '',
   firstname: '',
   middlename: '',
+  gender: '',
   permanentAddress: '',
   currentAddress: '',
   nationality: '',
-  day: '',
-  month: '',
-  year: '',
+  dayOfBirth: '',
+  monthOfBirth: '',
+  yearOfBirth: '',
   province: '',
   district: '',
   chiefdom: '',
@@ -41,26 +46,88 @@ const [formData, setFormData] = useState({
 
 // Handler for input changes
 const handleChange = (e) => {
-  const { name, value } = e.target;
-  setFormData({
-    ...formData,
-    [name]: value,
-  });
+  const { name, value, type } = e.target;
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: type === 'checkbox' ? e.target.checked : value,
+  }));
+
+   // Additional handling for gender input
+   if (name === 'gender') {
+    setFormData((prevData) => ({
+      ...prevData,
+      gender: value,
+    }));
+  }
 };
 
 // Handler for form submission
-const handleSubmit = (e) => {
+ // Handler for form submission
+
+ const saveDataToFireStore = async () => {
+  const db = getFirestore();
+  await addDoc(collection(db, "userData"), formData);
+  console.log("Record Successfully Submitted");
+}
+
+
+ const handleSubmit = async (e) => {
   e.preventDefault();
-  // Here you can submit formData to your database
-  console.log(formData);
+  
+
+  try {
+    await saveDataToFireStore();
+    // Provide feedback to the user upon successful submission (e.g., show a success message)
+    console.log("Form submitted successfully!");
+  } catch (error) {
+    // Handle errors gracefully (e.g., show an error message to the user)
+    console.error("Error submitting form:", error);
+  }
+  console.log(formData)
+  setFormData({
+    surname: '',
+    firstname: '',
+    middlename: '',
+    gender: '',
+    permanentAddress: '',
+    currentAddress: '',
+    nationality: '',
+    dayOfBirth: '',
+    monthOfBirth: '',
+    yearOfBirth: '',
+    province: '',
+    district: '',
+    chiefdom: '',
+    town: '',
+    tel: '',
+    email: '',
+    nationalId: '',
+    membershipType: '',
+    institution: '',
+    position: '',
+    startDate: '',
+    duties: '',
+    motivation: '',
+    referee1: '',
+    referee1Occupation: '',
+    referee1Tel: '',
+    referee1Email: '',
+    referee2: '',
+    referee2Occupation: '',
+    referee2Tel: '',
+    referee2Email: '',
+    signature: '',
+    date: '',
+  });
 };
+
 
 
   return (
     <div className="container">
     <div className="membership-form-container">
       <h2>Membership Registration Form</h2>
-      <form className="membership-form" onSubmit={handleSubmit}>
+      <form className="membership-form" action="http://localhost:5000/submit-form" method="POST" onSubmit={handleSubmit}>
         {/* Personal Information Section */}
         <div className="section">
           <h3>Personal Information</h3>
@@ -68,29 +135,42 @@ const handleSubmit = (e) => {
           <div className="firstAndSurname">
             <div className="form-group">
               <label htmlFor="surname">Surname:</label>
-              <input type="text" id="surname" name="surname" value={formData.surname} onChange={handleChange} required />
+              <input type="text" id="surname" name="surname" onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label htmlFor="firstname">First Name:</label>
-              <input type="text" id="firstname" name="firstname" value={formData.surname} onChange={handleChange} required />
+              <input type="text" id="firstname" name="firstname" onChange={handleChange} required />
             </div>
           </div>
+          <div className="middleGender">
           <div className="form-group">
             <label htmlFor="middlename">Middle Name(s):</label>
-            <input type="text" id="middlename" name="middlename" value={formData.surname} onChange={handleChange} />
+            <input type="text" id="middlename" name="middlename" onChange={handleChange} />
           </div>
+
+          <div className="form-group">
+          <label>Gender:</label><br />
+          <label htmlFor="male">Male</label>
+          <input type="radio" id="male" name="gender" value="Male" onChange={handleChange} />
+          <label htmlFor="female" className='femaleOther'>Female</label>
+          <input type="radio" id="female" name="gender" value="Female" onChange={handleChange} />
+          <label htmlFor="other" className='femaleOther'>Other</label>
+          <input type="radio" id="other" name="gender" value="Other" onChange={handleChange} />
+        </div>
+          </div>
+          
         </div>
 
         {/* Address Section */}
         <div className="section">
           <h3>Address</h3>
           <div className="form-group">
-            <label htmlFor="permanent-address">Permanent Address:</label>
-            <input type="text" id="permanent-address" name="permanent-address" required />
+            <label htmlFor="permanentAddress">Permanent Address:</label>
+            <input type="text" id="permanentAddress" name="permanentAddress" onChange={handleChange}  />
           </div>
           <div className="form-group">
-            <label htmlFor="current-address">Current Address:</label>
-            <input type="text" id="current-address" name="current-address" required />
+            <label htmlFor="currentAddress">Current Address:</label>
+            <input type="text" id="currentAddress" name="currentAddress" onChange={handleChange}  />
           </div>
         </div>
 
@@ -100,14 +180,14 @@ const handleSubmit = (e) => {
           <div className="nationalityAndDOB">
             <div className="form-group">
               <label htmlFor="nationality">Nationality:</label>
-              <input type="text" id="nationality" name="nationality" required />
+              <input type="text" id="nationality" name="nationality" onChange={handleChange}  />
             </div>
             <div className="form-group">
               <label>Date of Birth:</label>
               <div className="dob">
-                <input type="number" id="day" name="day" placeholder="Day" min="1" max="31" required />
-                <input type="number" id="month" name="month" placeholder="Month" required />
-                <input type="number" id="year" name="year" placeholder="Year" min="1900" max="2024" required />
+              <input type="number" id="dayOfBirth" name="dayOfBirth" placeholder="Day" min="1" max="31" onChange={handleChange} value={formData.dayOfBirth} />
+              <input type="number" id="monthOfBirth" name="monthOfBirth" placeholder="Month" onChange={handleChange} value={formData.monthOfBirth} />
+              <input type="number" id="yearOfBirth" name="yearOfBirth" placeholder="Year" min="1900" max="2024" onChange={handleChange} value={formData.yearOfBirth} />
               </div>
             </div>
           </div>
@@ -120,21 +200,21 @@ const handleSubmit = (e) => {
             <div className='pob'>
               <div className="form-group">
                 <label htmlFor="province">Province:</label>
-                <input type="text" id="province" name="province" required />
+                <input type="text" id="province" name="province" onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="district">District:</label>
-                <input type="text" id="district" name="district" required />
+                <input type="text" id="district" name="district" onChange={handleChange} />
               </div>
             </div>
             <div className='pob'>
               <div className="form-group">
                 <label htmlFor="chiefdom">Chiefdom:</label>
-                <input type="text" id="chiefdom" name="chiefdom" required />
+                <input type="text" id="chiefdom" name="chiefdom" onChange={handleChange}  />
               </div>
               <div className="form-group">
                 <label htmlFor="town">Town:</label>
-                <input type="text" id="town" name="town" required />
+                <input type="text" id="town" name="town" onChange={handleChange} />
               </div>
             </div>
           </div>
@@ -146,17 +226,17 @@ const handleSubmit = (e) => {
           <div className="emailTele">
             <div className="form-group">
               <label htmlFor="tel">Tel:</label>
-              <input type="text" id="tel" name="tel" required />
+              <input type="text" id="tel" name="tel" onChange={handleChange}  />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email" name="email" onChange={handleChange}  />
             </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="national-id">National ID No.:</label>
-            <input type="text" id="national-id" name="national-id" required />
+            <label htmlFor="nationalId">National ID No.:</label>
+            <input type="text" id="nationalId" name="nationalId"  onChange={handleChange} />
           </div>
         </div>
 
@@ -167,13 +247,13 @@ const handleSubmit = (e) => {
           <div className="form-group">
             <br />
             <label htmlFor="membership-type">Membership Type:</label>
-            <select id="membership-type" name="membership-type" required>
-              <option value="">Select Membership Type</option>
-              <option value="full">Full Membership</option>
-              <option value="associate">Associate Membership</option>
-              <option value="honorary">Honorary Membership</option>
-              <option value="student">Student Membership</option>
-            </select>
+              <select id="membership-type" name="membershipType" onChange={handleChange} value={formData.membershipType}>
+                <option value="">Select Membership Type</option>
+                <option value="Full Membership">Full Membership</option>
+                <option value="Associate Membership">Associate Membership</option>
+                <option value="Honorary Membership">Honorary Membership</option>
+                <option value="Student Membership">Student Membership</option>
+              </select>
           </div>
           {/* Additional fields based on membership type */}
         </div>
@@ -187,21 +267,21 @@ const handleSubmit = (e) => {
             <div className="employment-details">
               <div className="institution">
                 <label htmlFor="institution">Institution:</label>
-                <input type="text" id="institution" name="institution" required />
+                <input type="text" id="institution" name="institution" onChange={handleChange} />
               </div>
               <div className="positionAndDate">
                 <div className="position">
                   <label htmlFor="position">Title/Position:</label>
-                  <input type="text" id="position" name="position" required />
+                  <input type="text" id="position" name="position" onChange={handleChange}  />
                 </div>
                 <div className="start-date">
                   <label htmlFor="start-date">Start Date:</label>
-                  <input type="date" id="start-date" name="start-date" required />
+                  <input type="date" id="start-date" name="start-date" onChange={handleChange} />
                 </div>
               </div>
               <div className="duties">
                 <label htmlFor="duties">Duties:</label>
-                <textarea id="duties" name="duties" rows="2" required></textarea>
+                <textarea id="duties" name="duties" rows="2" onChange={handleChange} ></textarea>
               </div>
             </div>
           </div>
@@ -210,21 +290,21 @@ const handleSubmit = (e) => {
             <div className="employment-details">
               <div className="institution">
                 <label htmlFor="institution">Institution:</label>
-                <input type="text" id="institution" name="institution" required />
+                <input type="text" id="institution" name="institution" onChange={handleChange} />
               </div>
               <div className="positionAndDate">
                 <div className="position">
                   <label htmlFor="position">Title/Position:</label>
-                  <input type="text" id="position" name="position" required />
+                  <input type="text" id="position" name="position" onChange={handleChange}  />
                 </div>
-                <div className="start-date">
-                  <label htmlFor="start-date">Start Date:</label>
-                  <input type="date" id="start-date" name="start-date" required />
+                <div className="startDate">
+                  <label htmlFor="startDate">Start Date:</label>
+                  <input type="date" id="startDate" name="startDate" onChange={handleChange} />
                 </div>
               </div>
               <div className="duties">
                 <label htmlFor="duties">Duties:</label>
-                <textarea id="duties" name="duties" rows="2" required></textarea>
+                <textarea id="duties" name="duties" rows="2" onChange={handleChange}></textarea>
               </div>
             </div>
           </div>
@@ -238,7 +318,7 @@ const handleSubmit = (e) => {
           <div className="form-group">
             <br />
             <label htmlFor="motivation">Motivation:</label>
-            <textarea id="motivation" name="motivation" rows="10" required></textarea>
+            <textarea id="motivation" name="motivation" rows="10" onChange={handleChange} ></textarea>
           </div>
         </div>
 
@@ -250,40 +330,40 @@ const handleSubmit = (e) => {
             <br />
             <div className="referee">
               <label htmlFor="referee1">Referee 1:</label>
-              <input type="text" id="referee1" name="referee1" required />
+              <input type="text" id="referee1" name="referee1" onChange={handleChange} />
               <div className="occAndTele">
                 <div>
-                <label htmlFor="referee1-occupation">Occupation:</label>
-              <input type="text" id="referee1-occupation" name="referee1-occupation" required />
+                <label htmlFor="referee1Occupation">Occupation:</label>
+              <input type="text" id="referee1Occupation" name="referee1Occupation" onChange={handleChange} />
                 </div>
              <div>
-                <label htmlFor="referee1-tel">Tel:</label>
-                  <input type="text" id="referee1-tel" name="referee1-tel" required />
+                <label htmlFor="referee1Tel">Tel:</label>
+                  <input type="text" id="referee1Tel" name="referee1Tel" onChange={handleChange}  />
              </div>
             
               </div>
               
-              <label htmlFor="referee1-email">Email:</label>
-              <input type="email" id="referee1-email" name="referee1-email" required />
+              <label htmlFor="referee1Email">Email:</label>
+              <input type="email" id="referee1Email" name="referee1Email" onChange={handleChange}  />
             </div>
           </div>
           <div className="form-group">
             <div className="referee">
               <label htmlFor="referee2">Referee 2:</label>
-              <input type="text" id="referee2" name="referee2" required />
+              <input type="text" id="referee2" name="referee2" onChange={handleChange} />
               <div className="occAndTele">
                 <div>
-                <label htmlFor="referee1-occupation">Occupation:</label>
-              <input type="text" id="referee1-occupation" name="referee1-occupation" required />
+                <label htmlFor="referee2Occupation">Occupation:</label>
+              <input type="text" id="referee2Occupation" name="referee2Occupation" onChange={handleChange}  />
                 </div>
              <div>
-                <label htmlFor="referee1-tel">Tel:</label>
-                  <input type="text" id="referee1-tel" name="referee1-tel" required />
+                <label htmlFor="referee2Tel">Tel:</label>
+                  <input type="text" id="referee2Tel" name="referee2Tel" onChange={handleChange}  />
              </div>
             
               </div>
-              <label htmlFor="referee2-email">Email:</label>
-              <input type="email" id="referee2-email" name="referee2-email" required />
+              <label htmlFor="referee2Email">Email:</label>
+              <input type="email" id="referee2Email" name="referee2Email" onChange={handleChange} />
             </div>
           </div>
         </div>
@@ -293,7 +373,7 @@ const handleSubmit = (e) => {
           <h3>Declaration by Applicant</h3>
           <div className="form-group">
             <label htmlFor="declaration">I</label>
-            <input type="text" name="" id="inline" className='inline'  />
+            <input type="text" name="declaration" id="inline" className='inline' onChange={handleChange}  />
             <p className='inline' id='space'>,</p>
             <i className='inline' id='declara'>hereby declare that all the information provided by me in my application for membership to the Sierra Leone Association of Social Workers (SLASW) is true and complete to the best of my knowledge. I understand that any false information provided may lead to the rejection of my application or termination of membership even after approval upon the reliance of the false information provided. 
 I also pledge to abide by the Code of Ethics of SLASW, the constitution, and every term, condition, and rule of the Association. I understand that membership in SLASW is a privilege and that I have a responsibility to uphold the values and standards of the Association. I will actively participate in the activities of the Association and contribute to its growth and development to the best of my ability
@@ -302,11 +382,11 @@ I also pledge to abide by the Code of Ethics of SLASW, the constitution, and eve
           <div className="signDate">
           <div className="form-group">
             <label htmlFor="signature">Signature:</label>
-            <input type="text" id="signature" name="signature" required />
+            <input type="text" id="signature" name="signature" onChange={handleChange} />
           </div>
           <div className="form-group">
             <label htmlFor="date">Date:</label>
-            <input type="date" id="date" name="date" required />
+            <input type="date" id="date" name="date" onChange={handleChange} />
           </div>
           </div>
 

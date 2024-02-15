@@ -1,0 +1,32 @@
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    z-index: 1000; /* ensure it's above other content */
+  }
+  
+
+  @media print {
+    /* Hide the close button and print button when printing */
+    .modal-content .modal-close-btn,
+    .modal-content .modal-print-btn {
+      display: none;
+    }
+    
+    /* Add any additional styles to customize the printed output */
+  }
+  
