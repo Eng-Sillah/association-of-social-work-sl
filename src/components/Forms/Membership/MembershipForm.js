@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './MembershipForm.css'; // Import the CSS file
 import "../../../firebaseConfig"
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
@@ -8,6 +9,8 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const MembershipForm = () => {
 // State to store form data
+const [submitted, setSubmitted] = useState(false);
+const navigate = useNavigate()
 const [formData, setFormData] = useState({
   surname: '',
   firstname: '',
@@ -78,6 +81,7 @@ const handleChange = (e) => {
   try {
     await saveDataToFireStore();
     // Provide feedback to the user upon successful submission (e.g., show a success message)
+    setSubmitted(true);
     console.log("Form submitted successfully!");
   } catch (error) {
     // Handle errors gracefully (e.g., show an error message to the user)
@@ -119,13 +123,26 @@ const handleChange = (e) => {
     signature: '',
     date: '',
   });
+
 };
 
+const resetForm = () => {
+  setSubmitted(false);
+  navigate('/')
+};
 
 
   return (
     <div className="container">
     <div className="membership-form-container">
+    {submitted ? (
+          <div className="congratulations">
+            <h2>Congratulations!</h2>
+            <p>Your form has been successfully submitted.</p>
+            <button onClick={resetForm}>Okay</button>
+          </div>
+        ) : (
+          <React.Fragment>
       <h2>Membership Registration Form</h2>
       <form className="membership-form" action="http://localhost:5000/submit-form" method="POST" onSubmit={handleSubmit}>
         {/* Personal Information Section */}
@@ -401,6 +418,8 @@ I also pledge to abide by the Code of Ethics of SLASW, the constitution, and eve
         {/* Submit Button */}
         <button type="submit">Submit</button>
       </form>
+      </React.Fragment>
+      )}
     </div>
     </div>
   );

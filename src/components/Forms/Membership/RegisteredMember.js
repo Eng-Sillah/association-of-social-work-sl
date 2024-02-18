@@ -143,6 +143,7 @@ const RegisteredMember = () => {
           <tr>
             <th>Surname</th>
             <th>First Name</th>
+            <th>Gender</th>
             <th>Current Address</th>
             <th>Nationality</th>
             <th>Membership Type</th>
@@ -156,6 +157,7 @@ const RegisteredMember = () => {
             <tr key={index}>
               <td>{user.surname}</td>
               <td>{user.firstname}</td>
+              <td>{user.gender}</td>
               <td>{user.currentAddress}</td>
               <td>{user.nationality}</td>
               <td>{user.membershipType}</td>
