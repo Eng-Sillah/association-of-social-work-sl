@@ -13,8 +13,9 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<div><Hero /><Search /><Event /> <RegisteredMember /></div>} />
+        <Route path="/" element={<div><Hero /><Search /><Event /></div>} />
         <Route path="/register" element={<MembershipForm />} />
+        <Route path="/login" element={<RegisteredMember />} />
       </Routes>
     </div>
   );
