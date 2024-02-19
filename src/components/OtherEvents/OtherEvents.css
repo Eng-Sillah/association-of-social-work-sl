@@ -1,14 +1,23 @@
 /* Event.css */
+.event-mainContainer {
+  text-align: left;
+  width: 98%;
+  margin: 0 auto;
+}
 .event-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 20px 20px 0 20px;
   }
+
+  .eventHeading {
+    margin-left: 15px;
+  }
   
   .event-card {
-    width: 250px;
-    margin: 10px;
+    width: 20%;
+    /* margin: 10px; */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;

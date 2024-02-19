@@ -1,11 +1,11 @@
 // Event.js
 import React from 'react';
-import './Event.css'; // Import the CSS file
+import './OtherEvents.css'; // Import the CSS file
 import image01 from "../../image/hero-01.jpeg"
 import image02 from "../../image/uk-conference-2024.jpg.webp"
 import image03 from "../../image/Journalism awards 2023.jpg.webp"
 
-const Event = () => {
+const OtherEvents = () => {
   // Sample data for events
   const events = [
     {
@@ -60,7 +60,9 @@ const Event = () => {
   ];
 
   return (
-    <div className="event-container">
+    <div className="event-mainContainer">
+      <h2 className='eventHeading'>Latest articles, events and resources from SLASW</h2>
+      <div className='event-container'>
       {events.map((event) => (
         <div className="event-card" key={event.id}>
           <img src={event.image} alt={`Event ${event.id}`} />
@@ -68,9 +70,11 @@ const Event = () => {
           <hr />
           <p>{event.description}</p>
         </div>
+        
       ))}
+      </div>
     </div>
   );
 };
 
-export default Event;
+export default OtherEvents;

@@ -47,7 +47,7 @@
     border-left: none;
  }
   /* Banner styles */
-  .banner {
+  .searchBanner {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,22 +61,22 @@
     color: white;
   }
 
-  .banner .title {
+  .searchBanner .searchTitle {
     font-size: 1.3rem;
     font-weight: bolder;
     margin-bottom: 10px;
   }
 
-  .banner:hover {
+  .searchBanner:hover {
     background-color: rgb(1, 1, 102);
   }
   
-  .text {
+  .searchText {
     width: 60%;
     text-align: left;
   }
   
-  .text p {
+  .searchText p {
     margin: 0;
     font-size: 1.2rem;
   }

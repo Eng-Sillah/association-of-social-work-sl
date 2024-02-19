@@ -1,0 +1,41 @@
+.other-social-work-container {
+    margin-top: 20px;
+    width: 95%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .social-work-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .social-work-card {
+    margin: 10px;
+    padding: 20px;
+    width: 25%; /* Adjust the width based on your layout */
+  }
+  
+  .social-work-card h3 {
+    margin-top: 0;
+  }
+  
+  .social-work-card p {
+    margin-bottom: 10px;
+  }
+  
+  .social-work-card button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .social-work-card button:hover {
+    background-color: #0056b3;
+  }
+  

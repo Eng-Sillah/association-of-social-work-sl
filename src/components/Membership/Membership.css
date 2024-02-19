@@ -1,0 +1,45 @@
+.other-membership-container {
+    margin-top: 20px;
+    width: 95%;
+    margin: 0 auto;
+    text-align: justify;
+  }
+  
+  .membership-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .membership-card {
+    /* border: 1px solid #ddd; */
+    /* border-radius: 5px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+   text-align: left;
+    padding: 20px;
+    width: 20%; /* Adjust the width based on your layout */
+  }
+  
+  .membership-card h3 {
+    margin-top: 0;
+  }
+  
+  .membership-card p {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .membership-card button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .membership-card button:hover {
+    background-color: #0056b3;
+  }
+  
