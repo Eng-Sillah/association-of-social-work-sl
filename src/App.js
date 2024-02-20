@@ -13,7 +13,9 @@ import OtherSocialWork from './components/OtherSocialWork/OtherSocialWork';
 import Membership from './components/Membership/Membership';
 import Footer from './components/Footer/Footer';
 
+/////// About Links ///////
 import WhatIsSocialWork from './components/AboutUs/WhatIsSocialWork/WhatIsSocialWork';
+import AboutSLASW from './components/AboutUs/AboutSLASW/AboutSLASW';
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/register" element={<MembershipForm />} />
         <Route path="/login" element={<RegisteredMember />} />
         <Route path="what-is-social-work" element={<WhatIsSocialWork />} />
+        <Route path="about-slasw" element={<AboutSLASW />} />
       </Routes>
       <Footer />
     </div>

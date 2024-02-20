@@ -42,7 +42,7 @@ const Header = () => {
             </Link>
             <div className="dropdown-content">
               <Link to="/what-is-social-work">Social Work in SL</Link>
-              <Link to="/delegate-assembly">About SLASW</Link>
+              <Link to="/about-slasw">About SLASW</Link>
               <Link to="/ethics">Ethics</Link>
               
             </div>
