@@ -13,6 +13,7 @@ import OtherSocialWork from './components/OtherSocialWork/OtherSocialWork';
 import Membership from './components/Membership/Membership';
 import Footer from './components/Footer/Footer';
 
+import WhatIsSocialWork from './components/AboutUs/WhatIsSocialWork/WhatIsSocialWork';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<div><Hero /><Search /><Event /><Banner /> <OtherSocialWork /> <Banner /> <Membership /> <OtherEvents /></div>} />
         <Route path="/register" element={<MembershipForm />} />
         <Route path="/login" element={<RegisteredMember />} />
+        <Route path="what-is-social-work" element={<WhatIsSocialWork />} />
       </Routes>
       <Footer />
     </div>

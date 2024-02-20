@@ -12,16 +12,22 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    text-align: justify;
+    text-align: left;
     cursor: pointer;
+    overflow: hidden;
   }
   
   .event-card img {
     max-width: 100%;
     height: 160px;
     border-radius: 8px;
+    transition: 0.5s;
   }
   
+  .event-card img:hover {
+    transform: perspective(400px) translateZ(60px);
+  }
+
   .event-card h2 {
     margin-top: 10px;
     font-size: 1.5rem;
