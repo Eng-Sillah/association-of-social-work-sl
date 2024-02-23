@@ -1,7 +1,7 @@
 /* Hero.css */
 .hero-container {
     position: relative;
-    background: url('../../../public/images/hero-03.jpeg') center/cover no-repeat;
+    /* background: url('../../../public/images/hero-03.jpeg') center/cover no-repeat; */
     height: 81vh; /* Adjust the height as needed */
     display: flex;
     align-items: center;
@@ -9,6 +9,7 @@
     text-align: center;
     color: white;
     position: relative;
+    background-color: #006fb9;
   }
   
   .overlay {

@@ -3,6 +3,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
+import Login from './components/Login/Login';
 import Search from './components/Search/Search';
 import Event from './components/Events/Event';
 import OtherEvents from './components/OtherEvents/OtherEvents';
@@ -24,9 +25,10 @@ function App() {
       <Routes>
         <Route path="/" element={<div><Hero /><Search /><Event /><Banner /> <OtherSocialWork /> <Banner /> <Membership /> <OtherEvents /></div>} />
         <Route path="/register" element={<MembershipForm />} />
-        <Route path="/login" element={<RegisteredMember />} />
+        <Route path="/login" element={<Login />} />
         <Route path="what-is-social-work" element={<WhatIsSocialWork />} />
         <Route path="about-slasw" element={<AboutSLASW />} />
+        <Route path="registered-member" element={<RegisteredMember />} />
       </Routes>
       <Footer />
     </div>

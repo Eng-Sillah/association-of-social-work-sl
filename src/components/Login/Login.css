@@ -1,0 +1,77 @@
+/* Login.css */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    height: auto; /* Change height to auto */
+    color: white;
+}
+
+.login-container .content {
+    min-height: 400px; /* Change height to min-height */
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.login-form-group {
+    margin-bottom: 15px;
+    width: 90%;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.login-form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form-group .passwordLabel {
+    margin-top: 20px;
+}
+/* Updated button styles */
+button[type="submit"] {
+    /* width: 100%; */
+    padding: 10px 50px;
+    font-size: 18px;
+    color: #fff;
+    background-color: green;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+button[type="submit"]:hover {
+    background-color: greenyellow;
+}
+
+/* Error message style */
+.error-message {
+    font-size: 15px;
+    color: red;
+    position: absolute;
+    top: 80%; /* Position the error message below the input field */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
