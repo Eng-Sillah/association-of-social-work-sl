@@ -409,12 +409,7 @@ I also pledge to abide by the Code of Ethics of SLASW, the constitution, and eve
 
         </div>
 
-        {/* Official Use Section */}
-        <div className="section">
-          <h3>Official Use</h3>
-          {/* Include official use fields here */}
-        </div>
-
+  
         {/* Submit Button */}
         <button type="submit">Submit</button>
       </form>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Import the CSS file
-import logo from "../../image/SLASW LOGO.jpg"
+import logo from "../../image/SLASW LOGO (Transparent).png"
 import flag from "../../image/animated-flagF.gif"
 
 const Header = () => {
@@ -41,19 +41,106 @@ const Header = () => {
               About
             </Link>
             <div className="dropdown-content">
-              <Link to="/what-is-social-work">Social Work in SL</Link>
-              <Link to="/about-slasw">About SLASW</Link>
-              <Link to="/ethics">Ethics</Link>
-              
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">SLASW</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">Social Work in SL</Link>
+                    <Link to="/about-slasw">About SLASW</Link>
+                  </div>
+                </div>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">Govenrnce</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">Constitution</Link>
+                    <Link to="/about-slasw">Executive lagars</Link>
+                  </div>
+                </div>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">Meetings</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">AGM</Link>
+                    <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">Executives Meeting</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">Board</Link>
+                    <Link to="/about-slasw">NEC</Link>
+                    <Link to="/about-slasw">BEC</Link>
+                  </div>
+                </div>
+                  </div>
+                </div>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">Partners</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">IFSW</Link>
+                    <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">GOSL</Link>
+                  {/* <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">Ministry of Social Work</Link>
+                    <Link to="/about-slasw">NEC</Link>
+                    <Link to="/about-slasw">BEC</Link>
+                  </div> */}
+                  <Link to="." className="nav-item sub-dropdown-trigger">UNICEF</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">ASSW/</Link>
+                  {/* <Link to="." className="nav-item sub-dropdown-trigger">University  Societies / Departments</Link> */}
+                  
+                  <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">University  Societies / Departments</Link>
+                  {/* <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">FBC</Link>
+                    <Link to="/about-slasw">MMTU</Link>
+                    <Link to="/about-slasw">UNIMAK</Link>
+                    <Link to="/about-slasw">EBKUST</Link>
+                    <Link to="/about-slasw">Njala</Link>
+                    <Link to="/about-slasw">ETU</Link>
+                  </div> */}
+                </div>
+                </div>
+                  </div>
+                </div>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">Committees</Link>
+                  {/* <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">Social Work in SL</Link>
+                    <Link to="/about-slasw">About SLASW</Link>
+                  </div> */}
+                </div>
+            </div>
+          </div>
+
+          <div className="nav-dropdown">
+          <Link to="/emembership" className="nav-item">
+            Membership
+          </Link>
+          <div className="dropdown-content">
+              <Link to="/governance">Membership type</Link>
+              <Link to="/delegate-assembly">Professional Benefits</Link>
+              <Link to="/career">Student Benefits</Link>
+              <Link to="/legal-defence-fund">Membership FAQ</Link>
+            </div>
+          </div>
+          <div className="nav-dropdown">
+          <Link to="/emembership" className="nav-item">
+            Policy & Practice
+          </Link>
+          <div className="dropdown-content">
+              <Link to="/governance">SLASW Code of Ethics</Link>
+              <Link to="/delegate-assembly">SLASW Policies</Link>
+              <Link to="/career">National Social Welfare Policy</Link>
+              <Link to="/legal-defence-fund">Social work/Resources</Link>
+              <Link to="/legal-defence-fund">Advocacy & Social Action</Link>
+              <Link to="/legal-defence-fund">Social Justice</Link>
             </div>
           </div>
           <div className="nav-dropdown">
           <Link to="/practice" className="nav-item">
-            Governance
+            Professional/Development
           </Link>
           <div className="dropdown-content">
-              <Link to="/governance">Constitution</Link>
-              <Link to="/delegate-assembly">Executive lagars</Link>
+              <Link to="/governance">Center for Research academic training <br />  and Excellence Research & Data Training</Link>
+              <Link to="/delegate-assembly">Social Work Education</Link>
+              <Link to="/delegate-assembly">Credential & Certification</Link>
+              <Link to="/delegate-assembly">Careers & Job For Employers Jobs</Link>
               {/* <Link to="/career">Child Welfare</Link>
               <Link to="/ethics">Clinical Social Work</Link>
               <Link to="/legal-defence-fund">Legal Defence Fund</Link> */}
@@ -61,7 +148,7 @@ const Header = () => {
             </div> 
             <div className="nav-dropdown">
           <Link to="/career" className="nav-item">
-            Meetings
+            Events
             </Link>
             <div className="dropdown-content">
               <Link to="/agm">AGM</Link>
@@ -73,25 +160,9 @@ const Header = () => {
             </div>
           
           <Link to="/advocacy" className="nav-item">
-            Advocacy
+            SLASW PRESS
           </Link>
-          <Link to="/news" className="nav-item">
-            News
-          </Link>
-          <Link to="/events" className="nav-item">
-            Events
-          </Link>
-          <div className="nav-dropdown">
-          <Link to="/emembership" className="nav-item">
-            Membership
-          </Link>
-          <div className="dropdown-content">
-              <Link to="/governance">Membership type</Link>
-              <Link to="/delegate-assembly">Professional Benefits</Link>
-              <Link to="/career">Student Benefits</Link>
-              <Link to="/legal-defence-fund">Membership FAQ</Link>
-            </div>
-            </div>
+        
           {/* Add more regular navigation links as needed */}
         </div>
       </nav>

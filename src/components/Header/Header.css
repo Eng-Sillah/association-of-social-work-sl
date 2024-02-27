@@ -32,8 +32,7 @@
 
 .row {
   display: flex;
-  margin-top: 10px;
-  padding: 30px 0;
+  padding: 20px 0;
 }
 
 .top-row {
@@ -43,12 +42,12 @@
   align-items: center;
   border-bottom: 1px solid rgb(231, 228, 228);
   padding: 10px;
-  background-color: #00a652;
+  /* background-color: #00a652; */
 }
 
 .top-row .logo {
-  background-color: #00a652;
-  /* padding: 5px 20px; */
+  /* background-color: #00a652; */
+  padding: 5px 20px;
 }
 
 .top-row .logo img {
@@ -75,7 +74,7 @@
 
 .top-row-links {
   background-color: #00a652;
-  /* padding: 40px 25px; */
+  padding: 40px 25px;
 }
 
 .logo,
@@ -110,5 +109,47 @@
 }
 
 .dropdown-content a:hover {
+  background-color: #2980b9;
+}
+
+
+.sub-dropdown {
+  position: relative;
+}
+
+.sub-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: rgb(4, 4, 158);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  color: white;
+}
+.sub-sub-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: rgb(4, 4, 158);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  color: white;
+}
+
+.sub-dropdown:hover .sub-dropdown-content {
+  display: block;
+}
+
+.sub-dropdown-content a {
+  color: white;
+  padding: 12px 20px;
+  display: block;
+  text-decoration: none;
+  width: max-content;
+}
+
+.sub-dropdown-content a:hover {
   background-color: #2980b9;
 }
