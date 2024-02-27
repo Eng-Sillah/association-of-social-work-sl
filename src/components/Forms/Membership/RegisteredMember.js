@@ -164,6 +164,7 @@ const RegisteredMember = () => {
               <td>{user.tel}</td>
               <td>{user.email}</td>
               <td className='action'>
+                <button className="approve-btn" onClick={() => handleApprove(user.id)}>Pending</button>
                 <button className="approve-btn" onClick={() => handleApprove(user.id)}>Approve</button>
                 <button className="deny-btn" onClick={() => handleDeny(user.id)}>Deny</button>
                 <button className="view-btn" onClick={() => handleViewMore(user)}>View More</button>
