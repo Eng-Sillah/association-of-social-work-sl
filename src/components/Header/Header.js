@@ -115,8 +115,10 @@ const Header = () => {
           <div className="dropdown-content">
               <Link to="/governance">Membership type</Link>
               <Link to="/delegate-assembly">Professional Benefits</Link>
-              <Link to="/career">Student Benefits</Link>
-              <Link to="/legal-defence-fund">Membership FAQ</Link>
+              <Link to="/career">Member Resources</Link>
+              <Link to="/legal-defence-fund">Member Articles</Link>
+              <Link to="/legal-defence-fund">Member Directory</Link>
+              <Link to="/legal-defence-fund">Member FAQ</Link>
             </div>
           </div>
           <div className="nav-dropdown">
@@ -137,10 +139,21 @@ const Header = () => {
             Professional/Development
           </Link>
           <div className="dropdown-content">
-              <Link to="/governance">Center for Research academic training <br />  and Excellence Research & Data Training</Link>
-              <Link to="/delegate-assembly">Social Work Education</Link>
-              <Link to="/delegate-assembly">Credential & Certification</Link>
-              <Link to="/delegate-assembly">Careers & Job For Employers Jobs</Link>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">Center for Research</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">Academic Training</Link>
+                    <Link to="/about-slasw">Excellence</Link>
+                  </div>
+                </div>
+              
+              <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">Careers and Jobs</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">For Employers</Link>
+                    <Link to="/about-slasw">Jobs</Link>
+                  </div>
+                </div>
               {/* <Link to="/career">Child Welfare</Link>
               <Link to="/ethics">Clinical Social Work</Link>
               <Link to="/legal-defence-fund">Legal Defence Fund</Link> */}
@@ -151,17 +164,70 @@ const Header = () => {
             Events
             </Link>
             <div className="dropdown-content">
-              <Link to="/agm">AGM</Link>
-              <Link to="/executive-meeting">Executive Meetings</Link>
+              <Link to="/agm">Celebrations</Link>
+              <Link to="/executive-meeting">Conferences</Link>
+              <Link to="/executive-meeting">National Campaign</Link>
+              <Link to="/executive-meeting">Awards</Link>
+              <Link to="/executive-meeting">Upcomming Events/Calendar</Link>
+              <Link to="/executive-meeting">Archives</Link>
               {/* <div className="dropdown-content">
                 <Link to="/board">Board</Link>
               </div> */}
             </div>
             </div>
           
-          <Link to="/advocacy" className="nav-item">
-            SLASW PRESS
+            <div className="nav-dropdown">
+          <Link to="/emembership" className="nav-item">
+            MIDIA/SLASW PRESS
           </Link>
+          <div className="dropdown-content">
+          <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">NEWS</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">BLOGS</Link>
+                    <Link to="/about-slasw">PRESS RELEASES</Link>
+                    <Link to="/about-slasw">MARGAZINES</Link>
+                  </div>
+                </div>
+
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">PUBLICATIONS</Link>
+                  <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">POLICIES</Link>
+                    <Link to="/about-slasw">REPORTS</Link>
+                    <Link to="/about-slasw">JOURNALS</Link>
+                    <Link to="/about-slasw">BOOKS</Link>
+                  </div>
+                </div>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">PODCASTS</Link>
+                  {/* <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">POLICIES</Link>
+                    <Link to="/about-slasw">REPORTS</Link>
+                    <Link to="/about-slasw">JOURNALS</Link>
+                    <Link to="/about-slasw">BOOKS</Link>
+                  </div> */}
+                </div>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">GALLARY</Link>
+                  {/* <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">POLICIES</Link>
+                    <Link to="/about-slasw">REPORTS</Link>
+                    <Link to="/about-slasw">JOURNALS</Link>
+                    <Link to="/about-slasw">BOOKS</Link>
+                  </div> */}
+                </div>
+                <div className="sub-dropdown">
+                  <Link to="." className="nav-item sub-dropdown-trigger">INFORMATION HUB</Link>
+                  {/* <div className="sub-dropdown-content">
+                    <Link to="/what-is-social-work">POLICIES</Link>
+                    <Link to="/about-slasw">REPORTS</Link>
+                    <Link to="/about-slasw">JOURNALS</Link>
+                    <Link to="/about-slasw">BOOKS</Link>
+                  </div> */}
+                </div>
+            </div>
+          </div>
         
           {/* Add more regular navigation links as needed */}
         </div>
