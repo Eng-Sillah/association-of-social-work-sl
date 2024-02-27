@@ -47,3 +47,10 @@
     height: 1px;
     background-color: rgb(205, 203, 203);
 }
+
+.decleration {
+    margin-top: 10px;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+}

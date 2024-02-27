@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr className='footerHR' />
-            <p>Copyright ©2024 Sierra Leone Association of Social Workers | Site by Agile Collective | Privacy Policy</p>
+            <p className='decleration'>Copyright ©2024 Sierra Leone Association of Social Workers | Site by Meleka Cho Yongu Consultancy | Privacy Policy</p>
         </div>
     )
 }
