@@ -14,15 +14,19 @@
   .social-work-card {
     margin: 10px;
     padding: 20px;
-    width: 25%; /* Adjust the width based on your layout */
+    width: 48%;
+    background-color: #e4effa; 
+    border-radius: 10px;
   }
   
   .social-work-card h3 {
     margin-top: 0;
+    margin-bottom: 10px;
   }
   
   .social-work-card p {
     margin-bottom: 10px;
+    font-size: 16px;
   }
   
   .social-work-card button {
