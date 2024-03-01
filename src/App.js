@@ -16,7 +16,7 @@ import Footer from './components/Footer/Footer';
 
 /////// About Links ///////
 import WhatIsSocialWork from './components/AboutUs/WhatIsSocialWork/WhatIsSocialWork';
-import AboutSLASW from './components/AboutUs/AboutSLASW/AboutSLASW';
+import AboutSLASW from './components/AboutUs/AboutSLASW';
 import WhatSocialWorkDo from './components/AboutUs/WhatIsSocialWork/WhatSocialWorkDo/WhatSocialWorkDo';
 import Constitution from './components/AboutUs/Governance/Constitution/Constitution';
 

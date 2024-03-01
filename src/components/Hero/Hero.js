@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
       <div className="hero-content">
         <h1>Welcome to the Sierra Leone Association of Social Workers (SLASW)</h1>
-        <p>The independent professional membership organisation for social work across Sierra Leone</p>
+        <p>The Sierra Leone Association of Social Workers (SLASW) is the independent national professional organization of Social Workers, Social Work Students and Promoters dedicated to promoting the social work profession and the Association in Sierra Leone.</p>
         <button>Learn More</button>
       </div>
     </div>

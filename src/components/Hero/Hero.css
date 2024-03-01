@@ -41,7 +41,7 @@
   }
   
   .hero-content {
-    max-width: 600px;
+    max-width: 650px;
   }
   
   /* h1 {
@@ -50,8 +50,8 @@
   } */
   
   p {
-    font-size: 1.25rem;
-    margin-bottom: 30px;
+    font-size: 1.09rem;
+    margin-bottom: 10px;
   }
   
   button {
