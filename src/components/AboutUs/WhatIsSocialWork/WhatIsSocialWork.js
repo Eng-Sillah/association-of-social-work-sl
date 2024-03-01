@@ -22,7 +22,7 @@ function WhatIsSocialWork() {
       <div className="article-links">
         <div className="article-link">
         <span>➡️</span>
-          <Link to="/" className='link' >What social workers do</Link>
+          <Link to="/what-social-work-do" className='link' >What social workers do?</Link>
         </div>
         <div className="article-link">
         <span>➡️</span>

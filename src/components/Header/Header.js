@@ -51,7 +51,7 @@ const Header = () => {
                 <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">Govenrnce</Link>
                   <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">Constitution</Link>
+                    <Link to="/constitution">Constitution</Link>
                     <Link to="/about-slasw">Executive lagars</Link>
                   </div>
                 </div>

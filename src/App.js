@@ -17,6 +17,8 @@ import Footer from './components/Footer/Footer';
 /////// About Links ///////
 import WhatIsSocialWork from './components/AboutUs/WhatIsSocialWork/WhatIsSocialWork';
 import AboutSLASW from './components/AboutUs/AboutSLASW/AboutSLASW';
+import WhatSocialWorkDo from './components/AboutUs/WhatIsSocialWork/WhatSocialWorkDo/WhatSocialWorkDo';
+import Constitution from './components/AboutUs/Governance/Constitution/Constitution';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="what-is-social-work" element={<WhatIsSocialWork />} />
         <Route path="about-slasw" element={<AboutSLASW />} />
         <Route path="registered-member" element={<RegisteredMember />} />
+        <Route path="what-social-work-do" element={<WhatSocialWorkDo />} />
+        <Route path="constitution" element={<Constitution />} />
       </Routes>
       <Footer />
     </div>

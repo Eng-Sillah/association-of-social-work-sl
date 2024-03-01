@@ -1,0 +1,117 @@
+
+  .WhatSocialWorkDo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background-color: #006fb9;
+  }
+
+  .WhatSocialWorkDo-content .navLinks {
+    margin-bottom: 25px;
+    margin-top: 5px;
+  }
+
+  .WhatSocialWorkDo-content .navLinks .navLink {
+    color: rgb(192, 192, 192);
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .WhatSocialWorkDo-content {
+    width: 60%;
+    height: 100%;;
+    position: relative;
+    background-color: #006fb9;
+    color: white;
+    padding-left: 20px;
+    padding-right: 10px;
+    text-align: left;
+  }
+  
+  .WhatSocialWorkDo-content h2 {
+    font-size: 2.3rem;
+    font-weight: bold;
+  }
+  .WhatSocialWorkDo-image {
+    width: 40%;
+    height: 100%;
+    background-color: #006fb9;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(24% 0%,100% 0%,100% 100%,0% 100%);
+  }
+  
+  .WhatSocialWorkDo-image .imgg {
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+  }
+
+  .WhatSocialWorkDo-image .imgg:hover {
+    transform: perspective(400px) translateZ(100px);
+  }
+  
+  .whatSocialWorkDoContent {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  .whatSocialWorkDoContent .leftContainer {
+    width: 65%;
+    text-align: left;
+  }
+  .whatSocialWorkDoContent .leftContainer .quote {
+    font-size: 1.6rem;
+    font-weight: bolder;
+    margin-left: 60px;
+  }
+
+  .whatSocialWorkDoContent .rightContainer {
+    width: 30%;
+  }
+
+  .whatSocialWorkDoContent .rightContainer .links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .whatSocialWorkDoContent .rightContainer .links .headLink {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .whatSocialWorkDoContent .rightContainer .links .lowerLink {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: bolder;
+  }
+
+  .whatSocialWorkDoContent .rightContainer .links .lowerLink:hover {
+    text-decoration: underline;
+  }
+
+  .whatSocialWorkDoContent .leftContainer .imageContainer {
+    width: 100%;
+    height: 450px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .whatSocialWorkDoContent .leftContainer .imageContainer img {
+    width: 100%;
+    height: 100%;
+  }
+  .downloadContainer {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
