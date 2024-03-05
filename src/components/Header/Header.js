@@ -26,6 +26,9 @@ const Header = () => {
           <Link to="/donate" className="nav-item">
             Donate
           </Link>
+          <Link to="/donate" className="nav-item">
+            Shop
+          </Link>
           {/* <Link to="/register" className="nav-item">
             Register
           </Link> */}
