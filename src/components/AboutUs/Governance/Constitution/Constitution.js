@@ -39,7 +39,7 @@ function Constitution() {
             <h5>c. HONORARY MEMBERSHIP</h5>
             <p>i. Shall be persons who, in the opinion of the Association have done distinguished work to promote the Social Work Profession</p>
             <p>ii. Shall be persons who, in the opinion of the Association have done distinguished work in furthering the objectives of the Association. </p>
-            <p>iii. The recommendation or application for an Honorary Member shall be subject to approval at an Annual General Meeting</p>
+            <p>iii. The recommendation or application for an Honorary Member shall be subject to approval at an Annual General Meeting.</p>
             <p>iv. An Honorary Member shall have observer status at the Annual General Meeting </p>
             <h5>d. STUDENT MEMBERSHIP</h5>
             <p>i. A student member shall be persons pursuing a Social Work Program in a recognized University</p>
