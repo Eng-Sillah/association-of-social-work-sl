@@ -129,10 +129,10 @@ const Header = () => {
           <div className="dropdown-content">
               <Link to="/governance">SLASW Code of Ethics</Link>
               <Link to="/delegate-assembly">SLASW Policies</Link>
-              <Link to="/career">National Social Welfare Policy</Link>
-              <Link to="/legal-defence-fund">Social work/Resources</Link>
+              <Link to="/career">National Policies</Link>
+              {/* <Link to="/legal-defence-fund">Social work/Resources</Link> */}
               <Link to="/legal-defence-fund">Advocacy & Social Action</Link>
-              <Link to="/legal-defence-fund">Social Justice</Link>
+              {/* <Link to="/legal-defence-fund">Social Justice</Link> */}
             </div>
           </div>
           <div className="nav-dropdown">

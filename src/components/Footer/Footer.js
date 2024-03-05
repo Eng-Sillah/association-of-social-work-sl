@@ -12,7 +12,7 @@ const Footer = () => {
                     <p>Sierra Leone Association of Social Workers is a Company Limited by Guarantee registered pursuant to the Laws of Sierra Leone. </p>
                 </div>
                 <div className="contacts">
-                    <p className="address">C/o Department of Social Work, Fourah Bay Colleg, Freetown.</p>
+                    <p className="address">C/o Department of Social Work, Fourah Bay College, Freetown.</p>
                     <p className="tele">+2327-74-232-232</p>
                 </div>
                 <div className="socialLinks">
