@@ -36,6 +36,10 @@ function WhatIsSocialWork() {
         <span>➡️</span>
         <Link to="/" className='link' >World Social Work Day</Link>
         </div>
+        <div className="article-link">
+        <span>➡️</span>
+        <Link to="/" className='link' >Social Work Education</Link>
+        </div>
       </div>
       <Banner />
       <OtherEvents />

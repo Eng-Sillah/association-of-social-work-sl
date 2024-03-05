@@ -137,23 +137,23 @@ const Header = () => {
           </div>
           <div className="nav-dropdown">
           <Link to="/practice" className="nav-item">
-            Professional/Development
+            Professional Development
           </Link>
           <div className="dropdown-content">
                 <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">Center for Research</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">Center for Research, <br />Academic Training and Excellence</Link>
                   <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">Academic Training</Link>
-                    <Link to="/about-slasw">Excellence</Link>
+                    <Link to="/what-is-social-work">Research and Data</Link>
+                    <Link to="/about-slasw">Trainings</Link>
                   </div>
                 </div>
               
               <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">Careers and Jobs</Link>
-                  <div className="sub-dropdown-content">
+                  {/* <div className="sub-dropdown-content">
                     <Link to="/what-is-social-work">For Employers</Link>
                     <Link to="/about-slasw">Jobs</Link>
-                  </div>
+                  </div> */}
                 </div>
               {/* <Link to="/career">Child Welfare</Link>
               <Link to="/ethics">Clinical Social Work</Link>
@@ -167,7 +167,7 @@ const Header = () => {
             <div className="dropdown-content">
               <Link to="/agm">Celebrations</Link>
               <Link to="/executive-meeting">Conferences</Link>
-              <Link to="/executive-meeting">National Campaign</Link>
+              <Link to="/executive-meeting">National Campaigns</Link>
               <Link to="/executive-meeting">Awards</Link>
               <Link to="/executive-meeting">Upcomming Events/Calendar</Link>
               <Link to="/executive-meeting">Archives</Link>
@@ -183,25 +183,25 @@ const Header = () => {
           </Link>
           <div className="dropdown-content">
           <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">NEWS</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">News</Link>
                   <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">BLOGS</Link>
-                    <Link to="/about-slasw">PRESS RELEASES</Link>
-                    <Link to="/about-slasw">MARGAZINES</Link>
+                    <Link to="/what-is-social-work">Blogs</Link>
+                    <Link to="/about-slasw">Press Release</Link>
+                    <Link to="/about-slasw">Margazines</Link>
                   </div>
                 </div>
 
                 <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">PUBLICATIONS</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">Publications</Link>
                   <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">POLICIES</Link>
-                    <Link to="/about-slasw">REPORTS</Link>
-                    <Link to="/about-slasw">JOURNALS</Link>
-                    <Link to="/about-slasw">BOOKS</Link>
+                    <Link to="/what-is-social-work">Policies</Link>
+                    <Link to="/about-slasw">Reports</Link>
+                    <Link to="/about-slasw">Journals</Link>
+                    <Link to="/about-slasw">Books</Link>
                   </div>
                 </div>
                 <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">PODCASTS</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">Podcast</Link>
                   {/* <div className="sub-dropdown-content">
                     <Link to="/what-is-social-work">POLICIES</Link>
                     <Link to="/about-slasw">REPORTS</Link>
@@ -210,7 +210,7 @@ const Header = () => {
                   </div> */}
                 </div>
                 <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">GALLARY</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">Gallary</Link>
                   {/* <div className="sub-dropdown-content">
                     <Link to="/what-is-social-work">POLICIES</Link>
                     <Link to="/about-slasw">REPORTS</Link>
@@ -219,7 +219,7 @@ const Header = () => {
                   </div> */}
                 </div>
                 <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">INFORMATION HUB</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">Information Hub</Link>
                   {/* <div className="sub-dropdown-content">
                     <Link to="/what-is-social-work">POLICIES</Link>
                     <Link to="/about-slasw">REPORTS</Link>
