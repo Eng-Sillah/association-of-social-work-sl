@@ -87,6 +87,10 @@ const Login = () => {
             {!passwordValid && <p className="error-message">{passwordError}</p>}
           </div>
           <button type="submit">Login</button>
+          <div className="notAMember">
+            <p>If you don't already have an SLASW account</p>
+            {/* <Link>Register</Link> */}
+          </div>
         </form>
       </div>
     </div>

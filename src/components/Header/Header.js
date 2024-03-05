@@ -26,11 +26,11 @@ const Header = () => {
           <Link to="/donate" className="nav-item">
             Donate
           </Link>
-          <Link to="/register" className="nav-item">
+          {/* <Link to="/register" className="nav-item">
             Register
-          </Link>
+          </Link> */}
           <Link to="/login" className="nav-item">
-            Login
+            Login/Join
           </Link>
             </div>
          
@@ -44,15 +44,16 @@ const Header = () => {
                 <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">SLASW</Link>
                   <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">Social Work in SL</Link>
                     <Link to="/about-slasw">About SLASW</Link>
+                    <Link to="/what-is-social-work">Social Work in SL</Link>
                   </div>
                 </div>
                 <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">Govenrnce</Link>
                   <div className="sub-dropdown-content">
                     <Link to="/constitution">Constitution</Link>
-                    <Link to="/about-slasw">Executive lagars</Link>
+                    <Link to="/about-slasw">Organs of SLASW</Link>
+                    <Link to="/about-slasw">Committee</Link>
                   </div>
                 </div>
                 <div className="sub-dropdown">
@@ -72,20 +73,20 @@ const Header = () => {
                 <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">Partners</Link>
                   <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">IFSW</Link>
                     <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">GOSL</Link>
+                    <Link to="/what-is-social-work" className="nav-item sub-dropdown-trigger">IFSW</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">Ministry Of Social Welfare, GoSL</Link>
                   {/* <div className="sub-dropdown-content">
                     <Link to="/what-is-social-work">Ministry of Social Work</Link>
                     <Link to="/about-slasw">NEC</Link>
                     <Link to="/about-slasw">BEC</Link>
                   </div> */}
-                  <Link to="." className="nav-item sub-dropdown-trigger">UNICEF</Link>
-                  <Link to="." className="nav-item sub-dropdown-trigger">ASSW/</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">UNICEF Sierra Leone</Link>
+                  {/* <Link to="." className="nav-item sub-dropdown-trigger">ASSW/</Link> */}
                   {/* <Link to="." className="nav-item sub-dropdown-trigger">University  Societies / Departments</Link> */}
                   
                   <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">University  Societies / Departments</Link>
+                  <Link to="." className="nav-item sub-dropdown-trigger">University Social Work (Students ) Societies</Link>
                   {/* <div className="sub-dropdown-content">
                     <Link to="/what-is-social-work">FBC</Link>
                     <Link to="/about-slasw">MMTU</Link>
@@ -98,13 +99,7 @@ const Header = () => {
                 </div>
                   </div>
                 </div>
-                <div className="sub-dropdown">
-                  <Link to="." className="nav-item sub-dropdown-trigger">Committees</Link>
-                  {/* <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">Social Work in SL</Link>
-                    <Link to="/about-slasw">About SLASW</Link>
-                  </div> */}
-                </div>
+
             </div>
           </div>
 
@@ -178,7 +173,7 @@ const Header = () => {
           
             <div className="nav-dropdown">
           <Link to="/emembership" className="nav-item">
-            MIDIA/SLASW PRESS
+            SLASW Press
           </Link>
           <div className="dropdown-content">
           <div className="sub-dropdown">
