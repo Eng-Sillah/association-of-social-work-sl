@@ -8,12 +8,12 @@ const Footer = () => {
             <div className="contents">
                 <div className="description">
                     <h1>SLASW</h1>
-                    <h4>By your side, every step of the way.</h4>
-                    <p>Sierra Leone Association of Social Workers is a company limited by guarantee, registered in Sierra Leone. </p>
+                    <h4>Humanity to Others.</h4>
+                    <p>Sierra Leone Association of Social Workers is a Company Limited by Guarantee registered pursuant to the Laws of Sierra Leone. </p>
                 </div>
                 <div className="contacts">
-                    <p className="address">Wellesley House, 37 Waterloo Street, Birmingham, B2 5PP</p>
-                    <p className="tele">+232-79-000-000</p>
+                    <p className="address">C/o Department of Social Work, Fourah Bay Colleg, Freetown.</p>
+                    <p className="tele">+2327-74-232-232</p>
                 </div>
                 <div className="socialLinks">
                     <h2>Follows Us</h2>
@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr className='footerHR' />
-            <p className='decleration'>Copyright ©2024 Sierra Leone Association of Social Workers | Site by Meleka Cho Yongu Consultancy | Privacy Policy</p>
+            <p className='decleration'>Copyright ©2024 Sierra Leone Association of Social Workers | Privacy Policy</p>
         </div>
     )
 }

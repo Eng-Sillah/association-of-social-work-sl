@@ -116,9 +116,9 @@ const Header = () => {
           <div className="dropdown-content">
               <Link to="/governance">Membership type</Link>
               <Link to="/delegate-assembly">Professional Benefits</Link>
-              <Link to="/career">Member Resources</Link>
-              <Link to="/legal-defence-fund">Member Articles</Link>
               <Link to="/legal-defence-fund">Member Directory</Link>
+              <Link to="/career">Member Resources</Link>
+              {/* <Link to="/legal-defence-fund">Member Articles</Link> */}
               <Link to="/legal-defence-fund">Member FAQ</Link>
             </div>
           </div>
