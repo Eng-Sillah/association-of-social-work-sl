@@ -20,21 +20,24 @@ const Header = () => {
             </div>
             <h1 className='heading'>Sierra Leone <span className='flag'><img src={flag} alt="flag" /></span> <br /> Association of Social Workers (SLASW)</h1>
             <div className='top-row-links'>
-            <Link to="/advert" className="nav-item">
-            Advert
+            <Link to="/login" className="nav-item">
+            Login/Join
           </Link>
           <Link to="/donate" className="nav-item">
             Donate
           </Link>
+           
           <Link to="/donate" className="nav-item">
             Shop
           </Link>
+            <Link to="/advert" className="nav-item">
+            Advert
+          </Link>
+        
           {/* <Link to="/register" className="nav-item">
             Register
           </Link> */}
-          <Link to="/login" className="nav-item">
-            Login/Join
-          </Link>
+         
             </div>
          
         </div>
@@ -56,7 +59,7 @@ const Header = () => {
                   <div className="sub-dropdown-content">
                     <Link to="/constitution">Constitution</Link>
                     <Link to="/about-slasw">Organs of SLASW</Link>
-                    <Link to="/about-slasw">Committee</Link>
+                    <Link to="/about-slasw">Committees</Link>
                   </div>
                 </div>
                 <div className="sub-dropdown">
