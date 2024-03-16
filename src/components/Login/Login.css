@@ -1,6 +1,6 @@
 /* Login.css */
 .login-container {
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -8,6 +8,7 @@
     background-color: #f9f9f9;
     height: auto; /* Change height to auto */
     color: white;
+    background-image: url("https://giphy.com/embed/ge8f4At0BejIh0eiOT/video");
 }
 
 .login-container .content {
@@ -74,4 +75,21 @@ button[type="submit"]:hover {
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
+}
+
+.notAMember {
+    margin-top: 10px;
+}
+.notAMember p {
+    font-size: 15px;
+}
+
+.notAMember .registerLink {
+    text-decoration: none;
+    color: yellow;
+    font-weight: bolder;
+}
+
+.notAMember .registerLink:hover {
+    text-decoration: underline;
 }

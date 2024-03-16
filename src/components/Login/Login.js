@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import './Login.css';
 
@@ -89,7 +90,7 @@ const Login = () => {
           <button type="submit">Login</button>
           <div className="notAMember">
             <p>If you don't already have an SLASW account</p>
-            {/* <Link>Register</Link> */}
+            <Link to="/register" className='registerLink'>Click and Register Here</Link>
           </div>
         </form>
       </div>

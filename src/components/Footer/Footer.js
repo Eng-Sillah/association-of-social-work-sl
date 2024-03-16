@@ -1,5 +1,7 @@
 import React from 'react';
 import "./Footer.css";
+import { SocialIcon } from 'react-social-icons';
+import 'react-social-icons/meetup'
 
 const Footer = () => {
 
@@ -18,9 +20,10 @@ const Footer = () => {
                 <div className="socialLinks">
                     <h2>Follows Us</h2>
                     <div className="links">
-                    <div className='link'>F</div>
-                    <div className='link'>T</div>
-                    <div className='link'>I</div>
+                    <SocialIcon url="https://www.facebook.com/slasw.sowk " className='link' />
+                    <SocialIcon url="https://x.com/slasw_sl"  className='link'/>
+                    <SocialIcon url="https://www.youtube.com/@slasw_sl" className='link' />
+                    <SocialIcon url="https://www.instagram.com/slasw_sl " className='link' />
                     </div>
                 </div>
             </div>

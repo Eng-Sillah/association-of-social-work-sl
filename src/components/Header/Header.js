@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Import the CSS file
-import logo from "../../image/SLASW LOGO (Transparent).png"
+import logo from "../../image/SLASW LOGO (Transparent-1).png"
 import flag from "../../image/animated-flagF.gif"
 
 const Header = () => {
@@ -41,8 +41,8 @@ const Header = () => {
             </div>
          
         </div>
-        <div className="row">
-          <div className="nav-dropdown">
+        <div className="down-row">
+          <div className="navLinks-dropdown">
             <Link to="/about" className="nav-item">
               About
             </Link>
@@ -109,7 +109,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="nav-dropdown">
+          <div className="navLinks-dropdown">
           <Link to="/emembership" className="nav-item">
             Membership
           </Link>
@@ -122,7 +122,7 @@ const Header = () => {
               <Link to="/legal-defence-fund">Member FAQ</Link>
             </div>
           </div>
-          <div className="nav-dropdown">
+          <div className="navLinks-dropdown">
           <Link to="/emembership" className="nav-item">
             Policy & Practice
           </Link>
@@ -135,7 +135,7 @@ const Header = () => {
               {/* <Link to="/legal-defence-fund">Social Justice</Link> */}
             </div>
           </div>
-          <div className="nav-dropdown">
+          <div className="navLinks-dropdown">
           <Link to="/practice" className="nav-item">
             Professional Development
           </Link>
@@ -160,7 +160,7 @@ const Header = () => {
               <Link to="/legal-defence-fund">Legal Defence Fund</Link> */}
             </div>
             </div> 
-            <div className="nav-dropdown">
+            <div className="navLinks-dropdown">
           <Link to="/career" className="nav-item">
             Events
             </Link>
@@ -177,7 +177,7 @@ const Header = () => {
             </div>
             </div>
           
-            <div className="nav-dropdown">
+            <div className="navLinks-dropdown">
           <Link to="/emembership" className="nav-item">
             SLASW Press
           </Link>
