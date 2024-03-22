@@ -11,7 +11,7 @@ const MembershipForm = () => {
 // State to store form data
 const [submitted, setSubmitted] = useState(false);
 const navigate = useNavigate()
-const [referees, setReferees] = useState([{ name: '', occupation: '', tel: '', email: '' }]);
+// const [referees, setReferees] = useState([{ name: '', occupation: '', tel: '', email: '' }]);
 const [formData, setFormData] = useState({
   surname: '',
   firstname: '',
@@ -23,10 +23,6 @@ const [formData, setFormData] = useState({
   dayOfBirth: '',
   monthOfBirth: '',
   yearOfBirth: '',
-  province: '',
-  district: '',
-  chiefdom: '',
-  town: '',
   tel: '',
   email: '',
   nationalId: '',
@@ -36,16 +32,11 @@ const [formData, setFormData] = useState({
   startDate: '',
   duties: '',
   motivation: '',
-  referee1: '',
-  referee1Occupation: '',
-  referee1Tel: '',
-  referee1Email: '',
-  referee2: '',
-  referee2Occupation: '',
-  referee2Tel: '',
-  referee2Email: '',
   signature: '',
   date: '',
+  referees: [{ name: '', occupation: '', tel: '', email: '' }],
+  employments: [{ institution: '', position: '', startDate: '', duties: '' }],
+  educationalQualifications: [{ date: '', institution: '', certificateEarned: '', certificateFile: null },],
 });
 
 // Handler for input changes
@@ -69,13 +60,78 @@ const handleChange = (e, index) => {
   //   newReferees[index][name] = value;
   //   setReferees(newReferees);
 };
+ 
+  // Function to handle changes in the referee input fields
+  const handleRefereeChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedReferees = [...formData.referees];
+    updatedReferees[index][name] = value;
+    setFormData(prevData => ({
+      ...prevData,
+      referees: updatedReferees
+    }));
+  };
+  const handleEmploymentChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedEmployments = [...formData.employments];
+    updatedEmployments[index][name] = value;
+    setFormData(prevData => ({
+      ...prevData,
+      employments: updatedEmployments
+    }));
+  };
 
-const addReferee = () => {
-  setFormData((prevState) => ({
-    ...prevState,
-    referees: [...prevState.referees, { name: '', occupation: '', tel: '', email: '' }],
-  }));
-};
+  // Handler for input changes in the educational qualification section
+  const handleEducationChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedEducationalQualifications = [
+      ...formData.educationalQualifications,
+    ];
+    updatedEducationalQualifications[index][name] = value;
+    setFormData((prevData) => ({
+      ...prevData,
+      educationalQualifications: updatedEducationalQualifications,
+    }));
+  };
+
+    // Handler for uploading certificate files
+    const handleCertificateUpload = (e, index) => {
+      const file = e.target.files[0];
+      const updatedEducationalQualifications = [
+        ...formData.educationalQualifications,
+      ];
+      updatedEducationalQualifications[index].certificateFile = file;
+      setFormData((prevData) => ({
+        ...prevData,
+        educationalQualifications: updatedEducationalQualifications,
+      }));
+    };
+
+    // Function to add a new referee section
+    const addReferee = () => {
+      setFormData(prevData => ({
+        ...prevData,
+        referees: [...prevData.referees, { name: '', occupation: '', tel: '', email: '' }]
+      }));
+    };
+    const addEmployment = () => {
+      setFormData(prevData => ({
+        ...prevData,
+        employments: [...prevData.employments, { institution: '', position: '', startDate: '', duties: '' }]
+      }));
+    };
+
+  // Function to add a new educational qualification section
+  const addEducation = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      educationalQualifications: [
+        ...prevData.educationalQualifications,
+        { date: '', institution: '', certificateEarned: '', certificateFile: null },
+      ],
+    }));
+  };
+
   // State to track visibility of each section
   const [sectionVisibility, setSectionVisibility] = useState({
     personalInformation: true,
@@ -85,6 +141,7 @@ const addReferee = () => {
     contact: false,
     membershipCategory: false,
     professionalInformation: false,
+    education: false,
     motivation: false,
     referees: false,
     declaration: false,
@@ -149,11 +206,6 @@ const addReferee = () => {
     dayOfBirth: '',
     monthOfBirth: '',
     yearOfBirth: '',
-    province: '',
-    district: '',
-    chiefdom: '',
-    town: '',
-    tel: '',
     email: '',
     nationalId: '',
     membershipType: '',
@@ -162,19 +214,12 @@ const addReferee = () => {
     startDate: '',
     duties: '',
     motivation: '',
-    referee1: '',
-    referee1Occupation: '',
-    referee1Tel: '',
-    referee1Email: '',
-    referee2: '',
-    referee2Occupation: '',
-    referee2Tel: '',
-    referee2Email: '',
     signature: '',
     date: '',
+    referees: [{ name: '', occupation: '', tel: '', email: '' }],
+    employments: [{ institution: '', position: '', startDate: '', duties: '' }],
+    educationalQualifications: [{ date: '', institution: '', certificateEarned: '', certificateFile: null },],
   });
- // Reset referee sections after submission
- setReferees([{ name: '', occupation: '', tel: '', email: '' }]);
 };
 
 const resetForm = () => {
@@ -205,11 +250,11 @@ const resetForm = () => {
           <i>(This section should include basic personal details)</i>
           <div className="firstAndSurname">
             <div className="form-group">
-              <label htmlFor="surname">Surname:</label>
+              <label htmlFor="surname">Surname:<span className="required-field">*</span></label>
               <input type="text" id="surname" name="surname" onChange={handleChange} value={formData.surname} required />
             </div>
             <div className="form-group">
-              <label htmlFor="firstname">First Name:</label>
+              <label htmlFor="firstname">First Name:<span className="required-field">*</span></label>
               <input type="text" id="firstname" name="firstname" onChange={handleChange} value={formData.firstname} required />
             </div>
           </div>
@@ -220,7 +265,7 @@ const resetForm = () => {
           </div>
 
           <div className="form-group">
-          <label>Gender:</label><br />
+          <label>Gender:<span className="required-field">*</span></label><br />
           <label htmlFor="male">Male</label>
           <input type="radio" id="male" name="gender" value="Male" onChange={handleChange} />
           <label htmlFor="female" className='femaleOther'>Female</label>
@@ -232,94 +277,27 @@ const resetForm = () => {
 
           <div className="nationalityAndDOB">
             <div className="form-group">
-              <label htmlFor="nationality">Nationality:</label>
-              <input type="text" id="nationality" name="nationality" onChange={handleChange} value={formData.nationality}  />
+              <label htmlFor="nationality">Nationality:<span className="required-field">*</span></label>
+              <input type="text" id="nationality" name="nationality" onChange={handleChange} value={formData.nationality} required />
             </div>
             <div className="form-group">
-              <label>Date of Birth:</label>
+              <label>Date of Birth:<span className="required-field">*</span></label>
               <div className="dob">
               <input type="number" id="dayOfBirth" name="dayOfBirth" placeholder="Day" min="1" max="31" onChange={handleChange} value={formData.dayOfBirth} />
               <input type="number" id="monthOfBirth" name="monthOfBirth" placeholder="Month" onChange={handleChange} value={formData.monthOfBirth} />
-              <input type="number" id="yearOfBirth" name="yearOfBirth" placeholder="Year" min="1900" max="2024" onChange={handleChange} value={formData.yearOfBirth} />
+              <input type="number" id="yearOfBirth" name="yearOfBirth" placeholder="Year" min="1900" max="2024" onChange={handleChange} value={formData.yearOfBirth} required/>
               </div>
             </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="currentAddress">Current Address:</label>
-            <input type="text" id="currentAddress" name="currentAddress" onChange={handleChange} value={formData.currentAddress}  />
+            <label htmlFor="currentAddress">Current Address:<span className="required-field">*</span></label>
+            <input type="text" id="currentAddress" name="currentAddress" onChange={handleChange} value={formData.currentAddress} required  />
           </div>
           </div>
             )}
             </div>
         </div>
-
-        {/* Address Section
-        <div className="section" onClick={() => toggleSectionVisibility('address')}>
-          <h3>Address</h3>
-          {sectionVisibility.address && (
-            <div>
-          <div className="form-group">
-            <label htmlFor="permanentAddress">Permanent Address:</label>
-            <input type="text" id="permanentAddress" name="permanentAddress" onChange={handleChange}  />
-          </div>
-          <div className="form-group">
-            <label htmlFor="currentAddress">Current Address:</label>
-            <input type="text" id="currentAddress" name="currentAddress" onChange={handleChange}  />
-          </div>
-          </div>
-          )}
-        </div> */}
-
-        {/* Nationality and Date of Birth Section */}
-        {/* <div className="section" onClick={() => toggleSectionVisibility('nationalityAndDOB')}>
-          <h3>Nationality and Date of Birth</h3>
-          {sectionVisibility.nationalityAndDOB && (
-          <div className="nationalityAndDOB">
-            <div className="form-group">
-              <label htmlFor="nationality">Nationality:</label>
-              <input type="text" id="nationality" name="nationality" onChange={handleChange}  />
-            </div>
-            <div className="form-group">
-              <label>Date of Birth:</label>
-              <div className="dob">
-              <input type="number" id="dayOfBirth" name="dayOfBirth" placeholder="Day" min="1" max="31" onChange={handleChange} value={formData.dayOfBirth} />
-              <input type="number" id="monthOfBirth" name="monthOfBirth" placeholder="Month" onChange={handleChange} value={formData.monthOfBirth} />
-              <input type="number" id="yearOfBirth" name="yearOfBirth" placeholder="Year" min="1900" max="2024" onChange={handleChange} value={formData.yearOfBirth} />
-              </div>
-            </div>
-          </div>
-          )}
-        </div> */}
-
-        {/* Place of Birth Section */}
-        {/* <div className="section" onClick={() => toggleSectionVisibility('placeOfBirth')}>
-          <h3>Place of Birth</h3>
-          {sectionVisibility.placeOfBirth && (
-          <div className='pob-container'>
-            <div className='pob'>
-              <div className="form-group">
-                <label htmlFor="province">Province:</label>
-                <input type="text" id="province" name="province" onChange={handleChange} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="district">District:</label>
-                <input type="text" id="district" name="district" onChange={handleChange} />
-              </div>
-            </div>
-            <div className='pob'>
-              <div className="form-group">
-                <label htmlFor="chiefdom">Chiefdom:</label>
-                <input type="text" id="chiefdom" name="chiefdom" onChange={handleChange}  />
-              </div>
-              <div className="form-group">
-                <label htmlFor="town">Town:</label>
-                <input type="text" id="town" name="town" onChange={handleChange} />
-              </div>
-            </div>
-          </div>
-          )}
-        </div> */}
 
         {/* Contact Section */}
         <div className="section" >
@@ -329,11 +307,11 @@ const resetForm = () => {
             <div>
           <div className="emailTele">
             <div className="form-group">
-              <label htmlFor="tel">Tel:</label>
+              <label htmlFor="tel">Tel:<span className="required-field">*</span></label>
               <input type="text" id="tel" name="tel" onChange={handleChange} value={formData.tel}  />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Email:<span className="required-field">*</span></label>
               <input type="email" id="email" name="email" onChange={handleChange} value={formData.email} />
             </div>
           </div>
@@ -355,7 +333,7 @@ const resetForm = () => {
           {sectionVisibility.membershipCategory && (
           <div className="form-group">
             <br />
-            <label htmlFor="membershipType">Membership Type:</label>
+            <label htmlFor="membershipType">Membership Type:<span className="required-field">*</span></label>
               <select id="membershipType" name="membershipType" onChange={handleChange} value={formData.membershipType}>
                 <option value="">Select Membership Type</option>
                 <option value="Full Membership">Full Membership</option>
@@ -370,65 +348,105 @@ const resetForm = () => {
         </div>
 
         {/* Professional Information Section */}
-        <div className="section" >
-          <h3 onClick={() => toggleSectionVisibility('professionalInformation')}>Professional Information</h3>
-          {/* <i>(This section should include details about your professional background if your application is not for student membership)  </i> */}
-          <div>
-          {sectionVisibility.professionalInformation && (
-            <div>
-          <div className="form-group" id='current-employment'>
-            <label htmlFor="current-employment">Current Employment:</label>
-            <div className="employment-details">
-              <div className="institution">
-                <label htmlFor="institution">Institution:</label>
-                <input type="text" id="institution" name="institution" onChange={handleChange} value={formData.institution} />
-              </div>
-              <div className="positionAndDate">
-                <div className="position">
-                  <label htmlFor="position">Title/Position:</label>
-                  <input type="text" id="position" name="position" onChange={handleChange} value={formData.position} />
-                </div>
-                <div className="start-date">
-                  <label htmlFor="start-date">Start Date:</label>
-                  <input type="date" id="start-date" name="start-date" onChange={handleChange} value={formData.startDate} />
-                </div>
-              </div>
-              <div className="duties">
-                <label htmlFor="duties">Duties:</label>
-                <textarea id="duties" name="duties" rows="2" onChange={handleChange} value={formData.duties} ></textarea>
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="current-employment">Previous Employment:</label>
-            <div className="employment-details">
-              <div className="institution">
-                <label htmlFor="institution">Institution:</label>
-                <input type="text" id="institution" name="institution" onChange={handleChange} value={formData.institution} />
-              </div>
-              <div className="positionAndDate">
-                <div className="position">
-                  <label htmlFor="position">Title/Position:</label>
-                  <input type="text" id="position" name="position" onChange={handleChange} value={formData.position}  />
-                </div>
-                <div className="startDate">
-                  <label htmlFor="startDate">Start Date:</label>
-                  <input type="date" id="startDate" name="startDate" onChange={handleChange} />
-                </div>
-              </div>
-              <div className="duties">
-                <label htmlFor="duties">Duties:</label>
-                <textarea id="duties" name="duties" rows="2" onChange={handleChange}></textarea>
-              </div>
-            </div>
-          </div>
-          </div>
 
-        )}
+        <div className="section" >
+            <h3 onClick={() => toggleSectionVisibility('professionalInformation')}>Professional Information</h3>
+                {sectionVisibility.professionalInformation && (
+                  <div>
+                    <i>(Please enter at least one(1) job experience)</i>
+                    <br />
+               {formData.employments.map((employment, index) => (
+              <div key={index} className="referee-section">
+                <div className="form-group">
+                  <label htmlFor={`name-${index}`}>Institution:<span className="required-field">*</span></label>
+                  <input type="text" id={`institution-${index}`} name="institution" value={employment.institution} onChange={(e) => handleEmploymentChange(e, index)} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`occupation-${index}`}>Position:<span className="required-field">*</span></label>
+                  <input type="text" id={`position-${index}`} name="position" value={employment.position} onChange={(e) => handleEmploymentChange(e, index)} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`tel-${index}`}>StartDate:<span className="required-field">*</span></label>
+                  <input type="date" id={`startDate-${index}`} name="startDate" value={employment.startDate} onChange={(e) => handleEmploymentChange(e, index)} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`email-${index}`}>Duties:<span className="required-field">*</span></label>
+                  <input type="text" id={`eduties-${index}`} name="duties" value={employment.duties} onChange={(e) => handleEmploymentChange(e, index)} />
+                </div>
+              </div>
+            ))}
+                <button type="button" onClick={addEmployment}>Add Previouse Employment</button>
+            {/* {renderReferees()} */}
+                </div>
+                )}
         </div>
+
+      {/* Educational Section */}
+
+      <div className="section">
+                <h3 onClick={() => toggleSectionVisibility('education')}>
+                  Educational Qualifications
+                </h3>
+                {sectionVisibility.education && (
+                  <div>
+                    <i>(Please provide all your academics information and upload the certificate for each)</i>
+                    {formData.educationalQualifications.map((edu, index) => (
+                      <div key={index} className="education-section">
+                        <div className="form-group">
+                          <label htmlFor={`date-${index}`}>Date:<span className="required-field">*</span></label>
+                          <input
+                            type="date"
+                            id={`date-${index}`}
+                            name="date"
+                            value={edu.date}
+                            onChange={(e) => handleEducationChange(e, index)}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor={`institution-${index}`}>
+                            Institution:<span className="required-field">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            id={`institution-${index}`}
+                            name="institution"
+                            value={edu.institution}
+                            onChange={(e) => handleEducationChange(e, index)}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor={`certificate-${index}`}>
+                            Certificate Earned:<span className="required-field">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            id={`certificate-${index}`}
+                            name="certificateEarned"
+                            value={edu.certificateEarned}
+                            onChange={(e) => handleEducationChange(e, index)}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor={`certificateFile-${index}`}>
+                            Upload Certificate:<span className="required-field">*</span>
+                          </label>
+                          <input
+                            type="file"
+                            id={`certificateFile-${index}`}
+                            name="certificateFile"
+                            onChange={(e) => handleCertificateUpload(e, index)}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <button type="button" onClick={addEducation}>
+                      Add Education
+                    </button>
+                  </div>
+                )}
+      </div>
+            
           
-          {/* Additional fields for previous employment, educational qualifications, professional certifications or licenses */}
-        </div>
 
         {/* Motivation for Membership Section */}
         <div className="section" >
@@ -439,7 +457,7 @@ const resetForm = () => {
             <i>(This section is for the applicant to explain reasons for wanting to join SLASW, including their interest in the social work profession, their desire to contribute to the profession, and their expectations for the benefits of membership- not more than 1000 words) </i>
             <div className="form-group">
               <br />
-              <label htmlFor="motivation">Motivation:</label>
+              <label htmlFor="motivation">Motivation:<span className="required-field">*</span></label>
               <textarea id="motivation" name="motivation" rows="10" onChange={handleChange} value={formData.motivation} ></textarea>
             </div>
             </div>
@@ -452,30 +470,32 @@ const resetForm = () => {
                 <h3 onClick={() => toggleSectionVisibility('referees')}>Referees</h3>
                 {sectionVisibility.referees && (
                   <div>
-                {referees.map((referee, index) => (
-                  <div key={index} className="referee-section">
-                    <div className="form-group">
-                      <label htmlFor={`name-${index}`}>Name:</label>
-                      <input type="text" id={`name-${index}`} name="name" value={referee.name} onChange={(e) => handleChange(e, index)} />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor={`occupation-${index}`}>Occupation:</label>
-                      <input type="text" id={`occupation-${index}`} name="occupation" value={referee.occupation} onChange={(e) => handleChange(e, index)} />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor={`tel-${index}`}>Tel:</label>
-                      <input type="text" id={`tel-${index}`} name="tel" value={referee.tel} onChange={(e) => handleChange(e, index)} />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor={`email-${index}`}>Email:</label>
-                      <input type="email" id={`email-${index}`} name="email" value={referee.email} onChange={(e) => handleChange(e, index)} />
-                    </div>
-                  </div>
-                ))}
+                    <i>(Please enter at least one(1)) referee</i>
+               {formData.referees.map((referee, index) => (
+              <div key={index} className="referee-section">
+                <div className="form-group">
+                  <label htmlFor={`name-${index}`}>Name:<span className="required-field">*</span></label>
+                  <input type="text" id={`name-${index}`} name="name" value={referee.name} onChange={(e) => handleRefereeChange(e, index)} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`occupation-${index}`}>Occupation:<span className="required-field">*</span></label>
+                  <input type="text" id={`occupation-${index}`} name="occupation" value={referee.occupation} onChange={(e) => handleRefereeChange(e, index)} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`tel-${index}`}>Tel:<span className="required-field">*</span></label>
+                  <input type="text" id={`tel-${index}`} name="tel" value={referee.tel} onChange={(e) => handleRefereeChange(e, index)} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`email-${index}`}>Email:</label>
+                  <input type="email" id={`email-${index}`} name="email" value={referee.email} onChange={(e) => handleRefereeChange(e, index)} />
+                </div>
+              </div>
+            ))}
                 <button type="button" onClick={addReferee}>Add Referee</button>
+            {/* {renderReferees()} */}
                 </div>
                 )}
-              </div>
+          </div>
 
         {/* Declaration by Applicant Section */}
         <div className="section" >
@@ -483,7 +503,7 @@ const resetForm = () => {
           {sectionVisibility.declaration && (
             <div>
           <div className="form-group">
-            <label htmlFor="declaration">I</label>
+            <label htmlFor="declaration">I:<span className="required-field">*</span></label>
             <input type="text" name="declaration" id="inline" className='inline' onChange={handleChange}  />
             <p className='inline' id='space'>,</p>
             <i className='inline' id='declara'>hereby declare that all the information provided by me in my application for membership to the Sierra Leone Association of Social Workers (SLASW) is true and complete to the best of my knowledge. I understand that any false information provided may lead to the rejection of my application or termination of membership even after approval upon the reliance of the false information provided. 
@@ -496,7 +516,7 @@ const resetForm = () => {
             <input type="text" id="signature" name="signature" onChange={handleChange} />
           </div>
           <div className="form-group">
-            <label htmlFor="date">Date:</label>
+            <label htmlFor="date">Date:<span className="required-field">*</span></label>
             <input type="date" id="date" name="date" onChange={handleChange} />
           </div>
           </div>

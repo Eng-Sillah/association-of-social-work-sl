@@ -119,4 +119,21 @@
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
+    
+  }
+
+  .gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .gallery .imageDiv {
+    width: 48%;
+    position: relative;
+    margin: 2px;
+  }
+
+  .gallery .imageDiv img {
+    width: 100%;
   }

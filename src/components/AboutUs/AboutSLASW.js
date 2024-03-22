@@ -1,7 +1,7 @@
 import React from 'react';
 import "./AboutSLASW.css";
 import whatIsImg from "../../image/SLASW LOGO.jpg";
-import whataSocialWorkDoImg from "../../image/shutterstock_482415004.jpg.webp";
+import whataSocialWorkDoImg from "../../image/Photo/swc01.jpeg";
 import { Link } from 'react-router-dom';
 
 
@@ -51,6 +51,20 @@ function AboutSLASW() {
             <Link to="." className='lowerLink'>People with lived experience</Link>
             <Link to="." className='lowerLink'>Regulators & professional registration</Link>
             <Link to="." className='lowerLink'>World Social Work Day</Link>
+          </div>
+          <div className="gallery">
+            <div className="imageDiv">
+            <img src={whataSocialWorkDoImg} alt="What a Social Do" />
+            </div>
+            <div className="imageDiv">
+            <img src={whataSocialWorkDoImg} alt="What a Social Do" />
+            </div>
+            <div className="imageDiv">
+            <img src={whataSocialWorkDoImg} alt="What a Social Do" />
+            </div>
+            <div className="imageDiv">
+            <img src={whataSocialWorkDoImg} alt="What a Social Do" />
+            </div>
           </div>
         </div>
       </div>

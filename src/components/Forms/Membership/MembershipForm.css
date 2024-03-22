@@ -186,4 +186,10 @@
   button:hover {
     background-color: rgb(7, 30, 205)
   }
+
+  /* <span className="required-field">*</span> */
+
+  .required-field {
+    color: red;
+  }
   

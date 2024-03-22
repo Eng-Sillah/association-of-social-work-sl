@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fade, Slide, Zoom } from "react-slideshow-image";
+import "./Hero.css";
 import { useNavigate} from "react-router-dom"; // Import useHistory hook for navigation
 import "react-slideshow-image/dist/styles.css";
 import image01 from "../../image/banner-bg.jpg";
@@ -93,7 +94,7 @@ const Hero = () => {
     alignItems: 'center'
   }
   const handleJoinClick = () => {
-    navigate ('/join'); // Redirect to join page
+    navigate ('/login'); // Redirect to join page
   }
 
   const handleSearchClick = () => {
