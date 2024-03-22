@@ -60,6 +60,10 @@
     align-items: center;
   }
 
+  .article-link span {
+    margin-right: 15px;
+  }
+
   .article-link .link:hover {
     color: #006fb9;
   }

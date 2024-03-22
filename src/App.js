@@ -19,6 +19,7 @@ import WhatIsSocialWork from './components/AboutUs/WhatIsSocialWork/WhatIsSocial
 import AboutSLASW from './components/AboutUs/AboutSLASW';
 import WhatSocialWorkDo from './components/AboutUs/WhatIsSocialWork/WhatSocialWorkDo/WhatSocialWorkDo';
 import Constitution from './components/AboutUs/Governance/Constitution/Constitution';
+import OrgansOfSLASW from './components/AboutUs/Governance/OrganOfSLASW/OrgansOfSLASW';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="registered-member" element={<RegisteredMember />} />
         <Route path="what-social-work-do" element={<WhatSocialWorkDo />} />
         <Route path="constitution" element={<Constitution />} />
+        <Route path="organs" element={<OrgansOfSLASW />} />
       </Routes>
       <Footer />
     </div>
