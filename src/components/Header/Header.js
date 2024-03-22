@@ -62,7 +62,7 @@ const Header = () => {
                     <Link to="/about-slasw">Committees</Link>
                   </div>
                 </div>
-                <div className="sub-dropdown">
+                {/* <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">Meetings</Link>
                   <div className="sub-dropdown-content">
                     <Link to="/what-is-social-work">AGM</Link>
@@ -75,7 +75,7 @@ const Header = () => {
                   </div>
                 </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">Partners</Link>
                   <div className="sub-dropdown-content">
