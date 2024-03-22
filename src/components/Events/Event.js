@@ -32,30 +32,30 @@ const Event = () => {
       image: image01, // Replace with your image path
       description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
     },
-    {
-      id: 5,
-      title: 'Event Title',
-      image: image01, // Replace with your image path
-      description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
-    },
-    {
-      id: 6,
-      title: 'Event Title',
-      image: image01, // Replace with your image path
-      description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
-    },
-    {
-      id: 7,
-      title: 'Event Title',
-      image: image01, // Replace with your image path
-      description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
-    },
-    {
-      id: 8,
-      title: 'Event Title',
-      image: image01, // Replace with your image path
-      description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
-    },
+    // {
+    //   id: 5,
+    //   title: 'Event Title',
+    //   image: image01, // Replace with your image path
+    //   description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
+    // },
+    // {
+    //   id: 6,
+    //   title: 'Event Title',
+    //   image: image01, // Replace with your image path
+    //   description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
+    // },
+    // {
+    //   id: 7,
+    //   title: 'Event Title',
+    //   image: image01, // Replace with your image path
+    //   description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
+    // },
+    // {
+    //   id: 8,
+    //   title: 'Event Title',
+    //   image: image01, // Replace with your image path
+    //   description: 'Irure amet deserunt aliquip veniam  Lorem cupidatat consequat. Ut aliquip dolor do id quis minim. Aute fugiat aute labore fugiat aute nulla sit. Culpa fugiat',
+    // },
     // Add more events as needed
   ];
 

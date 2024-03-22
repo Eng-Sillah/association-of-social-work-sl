@@ -38,7 +38,11 @@ function OrgansOfSLASW() {
         </div>
         <div className="article-link">
         <span>➡️</span>
-        <Link to="/" className='link' >Social Work Education</Link>
+        <Link to="/" className='link' >Branch General Meeting (BGM)</Link>
+        </div>
+        <div className="article-link">
+        <span>➡️</span>
+        <Link to="/" className='link' >Branch Executive Committee (BEC)</Link>
         </div>
       </div>
       <Banner />
