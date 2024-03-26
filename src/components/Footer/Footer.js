@@ -16,6 +16,7 @@ const Footer = () => {
                 <div className="contacts">
                     <p className="address">C/o Department of Social Work, Fourah Bay College, Freetown.</p>
                     <p className="tele">+2327-74-232-232</p>
+                    <p className="tele">slasw.sl@gmail.com</p>
                 </div>
                 <div className="socialLinks">
                     <h2>Follows Us</h2>

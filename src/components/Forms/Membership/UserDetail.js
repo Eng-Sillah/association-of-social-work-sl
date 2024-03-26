@@ -7,11 +7,8 @@ const UserDetail = ({ formData }) => {
     
     const handleDownloadPDF = useReactToPrint({
       content: () => componentRef.current,
-     
-    }
-    );
+    });
 
-  
     const handleCancel = () => {
     //   onCancel(); // Call onCancel function provided by parent component
     };
@@ -135,93 +132,77 @@ const UserDetail = ({ formData }) => {
               <label htmlFor="institution">Institution:</label>
               <input type="text" id="institution" name="institution" value={formData.institution} readOnly />
             </div>
-            <div className="form-group" id='position'>
-              <label htmlFor="position">Title/Position:</label>
+            <div className="form-group">
+              <label htmlFor="position">Position:</label>
               <input type="text" id="position" name="position" value={formData.position} readOnly />
             </div>
-            <div className="form-group" id='start-date'>
-              <label htmlFor="start-date">Start Date:</label>
-              <input type="date" id="start-date" name="start-date" value={formData.startDate} readOnly />
+            <div className="form-group">
+              <label htmlFor="startDate">Start Date:</label>
+              <input type="text" id="startDate" name="startDate" value={formData.startDate} readOnly />
             </div>
-            <div className="form-group" id='duties'>
+            <div className="form-group">
               <label htmlFor="duties">Duties:</label>
-              <textarea id="duties" name="duties" rows="2" readOnly>{formData.duties}</textarea>
+              <input type="text" id="duties" name="duties" value={formData.duties} readOnly />
             </div>
           </div>
 
-          {/* Motivation for Membership Section */}
+          {/* Educational Qualifications Section */}
+          <div className="section">
+            <h3>Educational Qualifications</h3>
+            {formData.educationalQualifications.map((edu, index) => (
+              <div key={index} className="form-group education">
+                <label>Date:</label>
+                <input type="text" value={`${edu.date}`} readOnly />
+                <label>Institution:</label>
+                <input type="text" value={edu.institution} readOnly />
+                <label>Certificate Earned:</label>
+                <input type="text" value={edu.certificateEarned} readOnly />
+              </div>
+            ))}
+          </div>
+
+          {/* Motivation Section */}
           <div className="section">
             <h3>Motivation for Membership</h3>
             <div className="form-group">
-              <label htmlFor="motivation">Motivation:</label>
-              <textarea id="motivation" name="motivation" rows="10" readOnly>{formData.motivation}</textarea>
+              <label>Motivation:</label>
+              <textarea rows="5" value={formData.motivation} readOnly />
             </div>
           </div>
 
           {/* Referees Section */}
           <div className="section">
             <h3>Referees</h3>
-            <div className="form-group referee">
-              <label htmlFor="referee1">Referee 1:</label>
-              <input type="text" id="referee1" name="referee1" value={formData.referee1} readOnly />
-            </div>
-            <div className="form-group referee">
-              <label htmlFor="referee1Occupation">Occupation:</label>
-              <input type="text" id="referee1Occupation" name="referee1Occupation" value={formData.referee1Occupation} readOnly />
-            </div>
-            <div className="form-group referee">
-              <label htmlFor="referee1Tel">Tel:</label>
-              <input type="text" id="referee1Tel" name="referee1Tel" value={formData.referee1Tel} readOnly />
-            </div>
-            <div className="form-group referee">
-              <label htmlFor="referee1Email">Email:</label>
-              <input type="email" id="referee1Email" name="referee1Email" value={formData.referee1Email} readOnly />
-            </div>
-            <div className="form-group referee">
-              <label htmlFor="referee2">Referee 2:</label>
-              <input type="text" id="referee2" name="referee2" value={formData.referee2} readOnly />
-            </div>
-            <div className="form-group referee">
-              <label htmlFor="referee2Occupation">Occupation:</label>
-              <input type="text" id="referee2Occupation" name="referee2Occupation" value={formData.referee2Occupation} readOnly />
-            </div>
-            <div className="form-group referee">
-              <label htmlFor="referee2Tel">Tel:</label>
-              <input type="text" id="referee2Tel" name="referee2Tel" value={formData.referee2Tel} readOnly />
-            </div>
-            <div className="form-group referee">
-              <label htmlFor="referee2Email">Email:</label>
-              <input type="email" id="referee2Email" name="referee2Email" value={formData.referee2Email} readOnly />
-            </div>
+            {formData.referees.map((referee, index) => (
+              <div key={index} className="form-group referee">
+                <label>Name:</label>
+                <input type="text" value={referee.name} readOnly />
+                <label>Occupation:</label>
+                <input type="text" value={referee.occupation} readOnly />
+                <label>Tel:</label>
+                <input type="text" value={referee.tel} readOnly />
+                <label>Email:</label>
+                <input type="email" value={referee.email} readOnly />
+              </div>
+            ))}
           </div>
 
-          {/* Declaration by Applicant Section */}
+          {/* Declaration Section */}
           <div className="section">
             <h3>Declaration by Applicant</h3>
-            <div className="form-group">
-              <label htmlFor="declaration">Declaration:</label>
-              <input type="text" id="declaration" name="declaration" value={formData.declaration} readOnly />
-            </div>
-            <div className="form-group">
-              <label htmlFor="signature">Signature:</label>
-              <input type="text" id="signature" name="signature" value={formData.signature} readOnly />
-            </div>
-            <div className="form-group">
-              <label htmlFor="date">Date:</label>
-              <input type="date" id="date" name="date" value={formData.date} readOnly />
+            <div className="form-group declaration">
+              <input type="text" value="I, " readOnly />
+              <input type="text" value={formData.declaration} readOnly />
+              <input type="text" value="," readOnly />
+              <input type="text" value={formData.signature} readOnly />
+              <input type="text" value="hereby declare that all the information provided by me in my application for membership to the Sierra Leone Association of Social Workers (SLASW) is true and complete to the best of my knowledge. I understand that any false information provided may lead to the rejection of my application or termination of membership even after approval upon the reliance of the false information provided. I also pledge to abide by the Code of Ethics of SLASW, the constitution, and every term, condition, and rule of the Association. I understand that membership in SLASW is a privilege and that I have a responsibility to uphold the values and standards of the Association. I will actively participate in the activities of the Association and contribute to its growth and development to the best of my ability," readOnly />
+              <input type="date" value={formData.date} readOnly />
             </div>
           </div>
 
-          {/* Official Use Section */}
-          <div className="section">
-            <h3>Official Use</h3>
-            {/* Include official use fields here */}
-          </div>
-
-            <div className="section">
-            <button onClick={handleDownloadPDF}>Download PDF</button>
-            <button onClick={handleCancel}>Cancel</button>
-          </div>
+          {/* Submit Button */}
+          <button type="submit">Submit</button>
+          <button type="button" onClick={handleCancel}>Cancel</button>
         </form>
       </div>
     </div>
@@ -229,3 +210,4 @@ const UserDetail = ({ formData }) => {
 };
 
 export default UserDetail;
+

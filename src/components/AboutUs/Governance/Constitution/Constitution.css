@@ -115,3 +115,44 @@
     display: flex;
     justify-content: space-between;
   }
+
+
+  .constitution-content {
+    max-height: 40%;
+    overflow: hidden;
+    transition: max-height 0.5s ease; /* Add transition for smooth animation */
+  }
+  .hidden {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+  .show .constitution-content {
+    max-height: none;
+  }
+  .partial-content {
+    filter: blur(4px);
+  }
+  
+  .full-content {
+    height: auto;
+    overflow: auto;
+    filter: none;
+  }
+
+  .download-button {
+    margin-left: 20px;
+    background-color: #006fb9;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .download-button:hover {
+    background-color: rgb(7, 30, 205)
+  }
+  
+  

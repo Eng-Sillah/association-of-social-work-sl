@@ -116,10 +116,10 @@ const Header = () => {
           <div className="dropdown-content">
               <Link to="/governance">Membership type</Link>
               <Link to="/delegate-assembly">Professional Benefits</Link>
-              <Link to="/legal-defence-fund">Member Directory</Link>
-              <Link to="/career">Member Resources</Link>
+              <Link to="/legal-defence-fund">Members Directory</Link>
+              <Link to="/career">Members Resources</Link>
               {/* <Link to="/legal-defence-fund">Member Articles</Link> */}
-              <Link to="/legal-defence-fund">Member FAQ</Link>
+              <Link to="/legal-defence-fund">Membership FAQs</Link>
             </div>
           </div>
           <div className="navLinks-dropdown">
@@ -143,8 +143,8 @@ const Header = () => {
                 <div className="sub-dropdown">
                   <Link to="." className="nav-item sub-dropdown-trigger">Center for Research, <br />Academic Training and Excellence</Link>
                   <div className="sub-dropdown-content">
-                    <Link to="/what-is-social-work">Research and Data</Link>
-                    <Link to="/about-slasw">Trainings</Link>
+                    <Link to="/">Research and Data</Link>
+                    <Link to="/">Trainings</Link>
                   </div>
                 </div>
               
@@ -166,10 +166,10 @@ const Header = () => {
             </Link>
             <div className="dropdown-content">
               <Link to="/agm">Celebrations</Link>
-              <Link to="/executive-meeting">Conferences</Link>
+              {/* <Link to="/executive-meeting">Conferences</Link> */}
               <Link to="/executive-meeting">National Campaigns</Link>
               <Link to="/executive-meeting">Awards</Link>
-              <Link to="/executive-meeting">Upcomming Events/Calendar</Link>
+              <Link to="/executive-meeting">Calendar of Events</Link>
               <Link to="/executive-meeting">Archives</Link>
               {/* <div className="dropdown-content">
                 <Link to="/board">Board</Link>

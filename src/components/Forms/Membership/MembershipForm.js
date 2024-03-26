@@ -3,13 +3,20 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MembershipForm.css'; // Import the CSS file
 import "../../../firebaseConfig"
-// import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { imgStorage, txtStorage } from '../../../firebaseConfig';
+import { v4 } from 'uuid';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 
 
 const MembershipForm = () => {
 // State to store form data
 const [submitted, setSubmitted] = useState(false);
+const [profilePhoto, setProfilePhoto] = useState('');
+ // State to store selected ID card type and ID number
+ const [idCardType, setIdCardType] = useState('');
+ const [idCardNumber, setIdCardNumber] = useState('');
 const navigate = useNavigate()
 // const [referees, setReferees] = useState([{ name: '', occupation: '', tel: '', email: '' }]);
 const [formData, setFormData] = useState({
@@ -17,6 +24,7 @@ const [formData, setFormData] = useState({
   firstname: '',
   middlename: '',
   gender: '',
+  profilePhoto: '',
   permanentAddress: '',
   currentAddress: '',
   nationality: '',
@@ -55,7 +63,6 @@ const handleChange = (e, index) => {
       gender: value,
     }));
   }
-
   // const newReferees = [...referees];
   //   newReferees[index][name] = value;
   //   setReferees(newReferees);
@@ -71,6 +78,7 @@ const handleChange = (e, index) => {
       referees: updatedReferees
     }));
   };
+
   const handleEmploymentChange = (e, index) => {
     const { name, value } = e.target;
     const updatedEmployments = [...formData.employments];
@@ -94,18 +102,69 @@ const handleChange = (e, index) => {
     }));
   };
 
-    // Handler for uploading certificate files
-    const handleCertificateUpload = (e, index) => {
-      const file = e.target.files[0];
-      const updatedEducationalQualifications = [
-        ...formData.educationalQualifications,
-      ];
-      updatedEducationalQualifications[index].certificateFile = file;
-      setFormData((prevData) => ({
-        ...prevData,
-        educationalQualifications: updatedEducationalQualifications,
-      }));
+
+    // Handler for selecting ID card type
+    const handleIdCardTypeChange = (e) => {
+      setIdCardType(e.target.value);
+      // Reset ID number when changing ID card type
+      setIdCardNumber('');
     };
+  
+    // Handler for entering ID number
+    const handleIdNumberChange = (e) => {
+      setIdCardNumber(e.target.value);
+    };
+   
+
+      // Handler for uploading profile photo
+      const handleProfilePhotoUpload = async (e) => {
+        const file = e.target.files[0];
+        
+        setProfilePhoto(file)
+
+
+        try {
+          // Upload profile photo to Firebase Storage
+          const profilePhotoRef = ref(imgStorage, `profilePhotos/${v4()}`);
+          await uploadBytes(profilePhotoRef, file);
+      
+          // Get the download URL for the uploaded profile photo
+          const downloadURL = await getDownloadURL(profilePhotoRef);
+      
+          // Update the form data with the profile photo URL
+          formData.profilePhoto = downloadURL;
+        } catch (error) {
+          console.error('Error uploading profile photo:', error);
+          // Handle error
+        }
+      };
+      
+
+
+// Function to handle uploading certificate photos
+const handleCertificatePhotoUpload = async (e, index) => {
+  const file = e.target.files[0];
+
+  try {
+    // Upload certificate photo to Firebase Storage
+    const certificatePhotoRef = ref(imgStorage, `certificatePhotos/${v4()}`);
+    await uploadBytes(certificatePhotoRef, file);
+
+    // Get the download URL for the uploaded certificate photo
+    const downloadURL = await getDownloadURL(certificatePhotoRef);
+
+    // Update the form data with the certificate photo URL
+    const updatedEducationalQualifications = [...formData.educationalQualifications];
+    updatedEducationalQualifications[index].certificatePhoto = downloadURL;
+    setFormData(prevData => ({
+      ...prevData,
+      educationalQualifications: updatedEducationalQualifications
+    }));
+  } catch (error) {
+    console.error('Error uploading certificate photo:', error);
+    // Handle error
+  }
+};
 
     // Function to add a new referee section
     const addReferee = () => {
@@ -173,33 +232,81 @@ const handleChange = (e, index) => {
 // Handler for form submission
  // Handler for form submission
 
-//  const saveDataToFireStore = async () => {
-//   const db = getFirestore();
-//   await addDoc(collection(db, "userData"), formData);
-//   console.log("Record Successfully Submitted");
-// }
+ const saveDataToFirestore = async () => {
+  const db = getFirestore();
+  try {
+    await addDoc(collection(db, 'userData'), formData);
+    console.log('Record Successfully Submitted to Firestore');
+  } catch (error) {
+    console.error('Error submitting form to Firestore:', error);
+    // Handle error
+  }
+};
 
 
- const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
-  
 
-  // try {
-  //   await saveDataToFireStore();
-  //   // Provide feedback to the user upon successful submission (e.g., show a success message)
-  //   setSubmitted(true);
-  //   console.log("Form submitted successfully!");
-  // } catch (error) {
-  //   // Handle errors gracefully (e.g., show an error message to the user)
-  //   console.error("Error submitting form:", error);
-  // }
+  try {
+     // Upload profile photo to Firebase Storage
+     let profilePhotoUrl = ''; // Initialize profile photo URL variable
 
-  console.log(formData)
+     if (profilePhoto) {
+       const photoref = ref(imgStorage, `profilePhotos/${v4()}`);
+       await uploadBytes(photoref, profilePhoto);
+       profilePhotoUrl = await getDownloadURL(photoref);
+       console.log(profilePhotoUrl);
+ 
+       // Update the form data with the profile photo URL
+       setFormData(prevData => ({
+         ...prevData,
+         userProfiePhoto: profilePhotoUrl,
+       }));
+     } else {
+       throw new Error('Profile photo is required');
+     }
+    // Include profile photo URL in the form data
+    const updatedFormData = {
+      ...formData,
+      profilePhoto: profilePhotoUrl,
+    };
+
+    // Upload certificate files to Firebase Storage and get their URLs
+    const certificateUrls = await Promise.all(
+      updatedFormData.educationalQualifications.map(async (edu) => {
+        if (edu.certificateFile) {
+          const certificateRef = ref(imgStorage, `certificates/${edu.certificateFile.name}`);
+          await uploadBytes(certificateRef, edu.certificateFile);
+          return certificateRef.getDownloadURL();
+        }
+        return '';
+      })
+    );
+
+    // Include certificate URLs in the form data
+    updatedFormData.educationalQualifications = updatedFormData.educationalQualifications.map((edu, index) => ({
+      ...edu,
+      certificateFile: certificateUrls[index],
+    }));
+
+    // Store form data into Firestore
+    await saveDataToFirestore(updatedFormData);
+
+    // Provide feedback to the user upon successful submission
+    setSubmitted(true);
+    console.log("Form submitted successfully!");
+  } catch (error) {
+    // Handle errors gracefully
+    console.error("Error submitting form:", error);
+  }
+
+  // Clear the form data
   setFormData({
     surname: '',
     firstname: '',
     middlename: '',
     gender: '',
+    profilePhoto: '',
     permanentAddress: '',
     currentAddress: '',
     nationality: '',
@@ -218,9 +325,10 @@ const handleChange = (e, index) => {
     date: '',
     referees: [{ name: '', occupation: '', tel: '', email: '' }],
     employments: [{ institution: '', position: '', startDate: '', duties: '' }],
-    educationalQualifications: [{ date: '', institution: '', certificateEarned: '', certificateFile: null },],
+    educationalQualifications: [{ date: '', institution: '', certificateEarned: '', certificateFile: null }],
   });
 };
+
 
 const resetForm = () => {
   setSubmitted(false);
@@ -264,7 +372,7 @@ const resetForm = () => {
             <input type="text" id="middlename" name="middlename" onChange={handleChange} value={formData.middlename} />
           </div>
 
-          <div className="form-group">
+          <div className="form-group gender">
           <label>Gender:<span className="required-field">*</span></label><br />
           <label htmlFor="male">Male</label>
           <input type="radio" id="male" name="gender" value="Male" onChange={handleChange} />
@@ -273,6 +381,25 @@ const resetForm = () => {
           <label htmlFor="other" className='femaleOther'>Other</label>
           <input type="radio" id="other" name="gender" value="Other" onChange={handleChange} />
         </div>
+
+        <div className="section profilePhoto">
+                <div className="form-group">
+                  <label htmlFor="profilePhoto">Upload Profile Photo:</label>
+                  <input
+                    type="file"
+                    id="profilePhoto"
+                    name="profilePhoto"
+                    accept="image/*"
+                    onChange={handleProfilePhotoUpload}
+                  />
+                </div>
+                {profilePhoto && (
+                  <div className="profile-photo-preview">
+                    <img src={URL.createObjectURL(profilePhoto)} alt="Profile" />
+                  </div>
+                )}
+          </div>
+        
           </div>
 
           <div className="nationalityAndDOB">
@@ -320,6 +447,33 @@ const resetForm = () => {
             <label htmlFor="nationalId">National ID No.:</label>
             <input type="text" id="nationalId" name="nationalId" onChange={handleChange} value={formData.nationalId} />
           </div>
+
+          <div>
+        {/* <h3>National ID Number</h3> */}
+        <div className="form-group">
+          <label htmlFor="idCardType">Select ID Card Type:</label>
+          <select id="idCardType" name="idCardType" value={idCardType} onChange={handleIdCardTypeChange}>
+            <option value="">Select ID Card Type</option>
+            <option value="National ID">National ID</option>
+            <option value="Passport">Passport</option>
+            {/* Add more options if needed */}
+          </select>
+        </div>
+        {idCardType && (
+          <div className="form-group">
+            <label htmlFor="idCardNumber">Enter {idCardType} Number:</label>
+            <input
+              type="text"
+              id="idCardNumber"
+              name="idCardNumber"
+              value={idCardNumber}
+              onChange={handleIdNumberChange}
+              required
+            />
+          </div>
+        )}
+      </div>
+
           </div>
           )}
           </div>
@@ -434,7 +588,7 @@ const resetForm = () => {
                             type="file"
                             id={`certificateFile-${index}`}
                             name="certificateFile"
-                            onChange={(e) => handleCertificateUpload(e, index)}
+                            onChange={(e) => handleCertificatePhotoUpload(e, index)}
                           />
                         </div>
                       </div>

@@ -14,11 +14,13 @@
   .registered-member-table td {
     border: 1px solid #ddd;
     padding: 8px 4px;
+    font-size: 13px;
   }
   
   .registered-member-table th {
     background-color: #f2f2f2;
-    text-align: left;
+    text-align: center;
+    font-size: 13px;
   }
   
   .approve-btn,
@@ -48,5 +50,10 @@
 
   .registered-member-table .action button {
     font-size: 12px;
+  }
+
+  .userPhoto img {
+    width: 50px;
+    height: 50px;
   }
   
