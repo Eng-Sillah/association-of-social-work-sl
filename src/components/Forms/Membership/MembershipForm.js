@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './MembershipForm.css'; // Import the CSS file
 import "../../../firebaseConfig"
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { imgStorage, txtStorage } from '../../../firebaseConfig';
+import { imgStorage} from '../../../firebaseConfig';
 import { v4 } from 'uuid';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
@@ -35,6 +35,7 @@ const [formData, setFormData] = useState({
   email: '',
   nationalId: '',
   membershipType: '',
+  membershipSerialNumber: '',
   institution: '',
   position: '',
   startDate: '',
@@ -173,6 +174,7 @@ const handleCertificatePhotoUpload = async (e, index) => {
         referees: [...prevData.referees, { name: '', occupation: '', tel: '', email: '' }]
       }));
     };
+
     const addEmployment = () => {
       setFormData(prevData => ({
         ...prevData,
@@ -206,6 +208,25 @@ const handleCertificatePhotoUpload = async (e, index) => {
     declaration: false,
   });
 
+
+    // Function to generate membership serial number
+    const generateMembershipSerial = (membershipType) => {
+      const membershipCodeMap = {
+        'Full Membership': 'F',
+        'Associate Membership': 'A',
+        'Student Membership': 'S',
+        'Honorary Membership': 'H',
+      };
+      const typeCode = membershipCodeMap[membershipType];
+      const registrationGeneration = 1; // Assuming it's the first registration for now
+      const country = 'SL'; // Sierra Leone
+      const centuryOfYearRegistration = '20'; // Assuming the 21st century for now
+      const associationCode = 'SW'; // Social Worker
+      const yearOfRegistration = new Date().getFullYear().toString().slice(-2); // Get last two digits of the current year
+      const uniqueSerial = v4().slice(-4); // Generate a unique serial number
+      return `${typeCode}${registrationGeneration}${country}${centuryOfYearRegistration}${yearOfRegistration}${associationCode}${uniqueSerial}`;
+    };
+  
 
  // Effect to load draft from local storage
  useEffect(() => {
@@ -251,6 +272,16 @@ const handleSubmit = async (e) => {
      // Upload profile photo to Firebase Storage
      let profilePhotoUrl = ''; // Initialize profile photo URL variable
 
+      // Generate membership serial number based on membership type
+    const membershipSerialNumber = generateMembershipSerial(formData.membershipType);
+
+    // Update formData with the generated membership serial number
+    formData.membershipSerialNumber = membershipSerialNumber;
+    // const updatedFormData = {
+    //   ...formData,
+    //   membershipSerialNumber: membershipSerialNumber,
+    // };
+
      if (profilePhoto) {
        const photoref = ref(imgStorage, `profilePhotos/${v4()}`);
        await uploadBytes(photoref, profilePhoto);
@@ -265,7 +296,7 @@ const handleSubmit = async (e) => {
      } else {
        throw new Error('Profile photo is required');
      }
-    // Include profile photo URL in the form data
+    // // Include profile photo URL in the form data
     const updatedFormData = {
       ...formData,
       profilePhoto: profilePhotoUrl,
@@ -316,6 +347,7 @@ const handleSubmit = async (e) => {
     email: '',
     nationalId: '',
     membershipType: '',
+    membershipSerialNumber: '',
     institution: '',
     position: '',
     startDate: '',
@@ -327,6 +359,7 @@ const handleSubmit = async (e) => {
     employments: [{ institution: '', position: '', startDate: '', duties: '' }],
     educationalQualifications: [{ date: '', institution: '', certificateEarned: '', certificateFile: null }],
   });
+
 };
 
 

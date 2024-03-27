@@ -1,0 +1,15 @@
+.profile-info img {
+    width: 100px;
+    height: 100px;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* .userDetail label,
+.userDetail input {
+    padding-left: 20px;
+} */

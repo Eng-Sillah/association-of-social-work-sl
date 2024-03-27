@@ -1,23 +1,40 @@
 import React, { useRef } from 'react';
 import './MembershipForm.css'; // Import the CSS file
+import "./UserDetail.css";
+// import { useNavigate } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
+import { FaFilePdf } from 'react-icons/fa';
+import PDFDocument from './PDFDocument'; // Import the PDFDocument component
 
 const UserDetail = ({ formData }) => {
-    const componentRef = useRef();
+  const componentRef = useRef();
+  // const navigate = useNavigate();
     
-    const handleDownloadPDF = useReactToPrint({
-      content: () => componentRef.current,
-    });
+  const handleDownloadPDF = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
     const handleCancel = () => {
-    //   onCancel(); // Call onCancel function provided by parent component
+      // navigate('/registered-member');
     };
 
   return (
     <div className="container">
-      <div className="membership-form-container">
-        <h2>User Details</h2>
-        <form className="membership-form">
+      <div className="membership-form-container userDetail">
+      <h2>{formData.firstname} {formData.middlename} {formData.surname}</h2>
+                {/* Display Profile Photo and Membership Serial Number */}
+                <div className="profile-info">
+          <div className="membership-serial">
+            <p>Membership Serial Number:<b> {formData.membershipSerialNumber}</b></p>
+          </div>
+          <img src={formData.profilePhoto} alt="Profile" />
+        </div>
+        
+        <form className="membership-form" ref={componentRef}>
           {/* Personal Information Section */}
           <div className="section">
             <h3>Personal Information</h3>
@@ -45,25 +62,8 @@ const UserDetail = ({ formData }) => {
                 <label htmlFor="other" className='femaleOther'>Other</label>
                 <input type="radio" id="other" name="gender" value="Other" checked={formData.gender === 'Other'} readOnly />
               </div>
+              
             </div>
-          </div>
-
-          {/* Address Section */}
-          <div className="section">
-            <h3>Address</h3>
-            <div className="form-group">
-              <label htmlFor="permanentAddress">Permanent Address:</label>
-              <input type="text" id="permanentAddress" name="permanentAddress" value={formData.permanentAddress} readOnly />
-            </div>
-            <div className="form-group">
-              <label htmlFor="currentAddress">Current Address:</label>
-              <input type="text" id="currentAddress" name="currentAddress" value={formData.currentAddress} readOnly />
-            </div>
-          </div>
-
-          {/* Nationality and Date of Birth Section */}
-          <div className="section">
-            <h3>Nationality and Date of Birth</h3>
             <div className="form-group">
               <label htmlFor="nationality">Nationality:</label>
               <input type="text" id="nationality" name="nationality" value={formData.nationality} readOnly />
@@ -74,28 +74,15 @@ const UserDetail = ({ formData }) => {
                 <input type="text" value={`${formData.dayOfBirth}/${formData.monthOfBirth}/${formData.yearOfBirth}`} readOnly />
               </div>
             </div>
+            
           </div>
 
-          {/* Place of Birth Section */}
+          {/* Address Section */}
           <div className="section">
-            <h3>Place of Birth</h3>
-            <div className="pob-container">
-              <div className="form-group pob">
-                <label htmlFor="province">Province:</label>
-                <input type="text" id="province" name="province" value={formData.province} readOnly />
-              </div>
-              <div className="form-group pob">
-                <label htmlFor="district">District:</label>
-                <input type="text" id="district" name="district" value={formData.district} readOnly />
-              </div>
-              <div className="form-group pob">
-                <label htmlFor="chiefdom">Chiefdom:</label>
-                <input type="text" id="chiefdom" name="chiefdom" value={formData.chiefdom} readOnly />
-              </div>
-              <div className="form-group pob">
-                <label htmlFor="town">Town:</label>
-                <input type="text" id="town" name="town" value={formData.town} readOnly />
-              </div>
+            <h3>Address</h3>
+            <div className="form-group">
+              <label htmlFor="currentAddress">Current Address:</label>
+              <input type="text" id="currentAddress" name="currentAddress" value={formData.currentAddress} readOnly />
             </div>
           </div>
 
@@ -125,26 +112,23 @@ const UserDetail = ({ formData }) => {
             </div>
           </div>
 
-          {/* Professional Information Section */}
+       {/* Professional Information Section */}
           <div className="section">
             <h3>Professional Information</h3>
-            <div className="form-group" id='current-employment'>
-              <label htmlFor="institution">Institution:</label>
-              <input type="text" id="institution" name="institution" value={formData.institution} readOnly />
-            </div>
-            <div className="form-group">
-              <label htmlFor="position">Position:</label>
-              <input type="text" id="position" name="position" value={formData.position} readOnly />
-            </div>
-            <div className="form-group">
-              <label htmlFor="startDate">Start Date:</label>
-              <input type="text" id="startDate" name="startDate" value={formData.startDate} readOnly />
-            </div>
-            <div className="form-group">
-              <label htmlFor="duties">Duties:</label>
-              <input type="text" id="duties" name="duties" value={formData.duties} readOnly />
-            </div>
+            {formData.employments.map((employment, index) => (
+              <div key={index} className="form-group" id={`current-employment-${index}`}>
+                <label htmlFor={`institution-${index}`}>Institution:</label>
+                <input type="text" id={`institution-${index}`} name={`institution-${index}`} value={employment.institution} readOnly />
+                <label htmlFor={`position-${index}`}>Position:</label>
+                <input type="text" id={`position-${index}`} name={`position-${index}`} value={employment.position} readOnly />
+                <label htmlFor={`startDate-${index}`}>Start Date:</label>
+                <input type="text" id={`startDate-${index}`} name={`startDate-${index}`} value={employment.startDate} readOnly />
+                <label htmlFor={`duties-${index}`}>Duties:</label>
+                <input type="text" id={`duties-${index}`} name={`duties-${index}`} value={employment.duties} readOnly />
+              </div>
+            ))}
           </div>
+
 
           {/* Educational Qualifications Section */}
           <div className="section">
@@ -202,8 +186,11 @@ const UserDetail = ({ formData }) => {
 
           {/* Submit Button */}
           <button type="submit">Submit</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
+          <button type="button" onClick={handleCancel}>Close</button>
         </form>
+        <div className="download-pdf-button">
+          <button onClick={handlePrint}><FaFilePdf /> Download as PDF</button>
+        </div>
       </div>
     </div>
   );
